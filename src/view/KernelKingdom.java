@@ -29,18 +29,24 @@ public class KernelKingdom {
         menuPanel.add(instructionsButton);
         menuPanel.add(settingsButton);
 
-
         // MAIN GAME PANEL
-        mainGamePanel = new Panel("main-game-panel.png");
-
-
+        mainGamePanel = new Panel(false, "main-game-panel.png");
 
         // INSTRUCTIONS PANEL
         instructionsPanel = new Panel(false, "instructions-panel.png");
+        JButton backInstMenuButton = new Button("back");
+        backInstMenuButton.setBounds(300, 538, 100, 70);
+        backInstMenuButton.addActionListener(e -> switchPanel(menuPanel, menuPanel));
 
+        instructionsPanel.add(backInstMenuButton);
 
         // SETTINGS BUTTON
         settingsPanel = new Panel(false, "settings-panel.png");
+        JButton backSettingsMenuButton = new Button("back");
+        backSettingsMenuButton.setBounds(300, 538, 100, 70);
+        backSettingsMenuButton.addActionListener(e -> switchPanel(settingsPanel, menuPanel));
+        settingsPanel.add(backSettingsMenuButton);
+
 
         frame.add(menuPanel);
         frame.add(mainGamePanel);
