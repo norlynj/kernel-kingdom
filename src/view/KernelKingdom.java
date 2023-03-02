@@ -5,7 +5,7 @@ public class KernelKingdom {
     private Panel menuPanel;
     private Panel mainGamePanel;
     private Panel instructionsPanel;
-    private Panel settingsPanel;
+    private Panel aboutPanel;
 
     public KernelKingdom() {
         frame = new Frame("Kernel Kingdom");
@@ -14,20 +14,20 @@ public class KernelKingdom {
         menuPanel = new Panel("menu.png");
         JButton startButton = new Button("start");
         JButton instructionsButton = new Button("instructions");
-        JButton settingsButton = new Button("settings");
+        JButton aboutButton = new Button("about");
 
         startButton.setBounds(74, 300, 200, 70);
         instructionsButton.setBounds(74, 400, 200, 70);
-        settingsButton.setBounds(74, 500, 200, 70);
+        aboutButton.setBounds(74, 500, 200, 70);
 
         startButton.addActionListener(e-> switchPanel(menuPanel, mainGamePanel));
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
-        settingsButton.addActionListener(e-> switchPanel(menuPanel, settingsPanel));
+        aboutButton.addActionListener(e-> switchPanel(menuPanel, aboutPanel));
 
 
         menuPanel.add(startButton);
         menuPanel.add(instructionsButton);
-        menuPanel.add(settingsButton);
+        menuPanel.add(aboutButton);
 
         // MAIN GAME PANEL
         mainGamePanel = new Panel(false, "main-game-panel.png");
@@ -40,18 +40,18 @@ public class KernelKingdom {
 
         instructionsPanel.add(backInstMenuButton);
 
-        // SETTINGS BUTTON
-        settingsPanel = new Panel(false, "settings-panel.png");
-        JButton backSettingsMenuButton = new Button("back");
-        backSettingsMenuButton.setBounds(300, 538, 100, 70);
-        backSettingsMenuButton.addActionListener(e -> switchPanel(settingsPanel, menuPanel));
-        settingsPanel.add(backSettingsMenuButton);
+        // ABOUT BUTTON
+        aboutPanel = new Panel(false, "settings-panel.png");
+        JButton backAboutMenuButton = new Button("back");
+        backAboutMenuButton.setBounds(300, 538, 100, 70);
+        backAboutMenuButton.addActionListener(e -> switchPanel(aboutPanel, menuPanel));
+        aboutPanel.add(backAboutMenuButton);
 
 
         frame.add(menuPanel);
         frame.add(mainGamePanel);
         frame.add(instructionsPanel);
-        frame.add(settingsPanel);
+        frame.add(aboutPanel);
         frame.setVisible(true);
     }
 
