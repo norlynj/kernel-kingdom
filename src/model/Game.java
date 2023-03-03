@@ -14,7 +14,8 @@ public class Game {
 
     public Game() {
         loadWordsFromFile("src/resources/OSwords.txt");
-        this.wordToGuess = getRandomWord();
+        this.wordToGuess = this.getRandomWord();
+        this.currentGuess = this.setBlanks();
         System.out.println("wordToGuess: " + wordToGuess);
         System.out.println("currentGuess: " + currentGuess);
         System.out.println("words: " + words);
@@ -51,6 +52,15 @@ public class Game {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
+    }
+
+    private StringBuilder setBlanks() {
+        currentGuess = new StringBuilder(wordToGuess);
+        for (int i = 0; i < wordToGuess.length(); i++) {
+            if (wordToGuess.charAt(i) != ' ')
+                currentGuess.setCharAt(i, '_');
+        }
+        return currentGuess;
     }
     private String getRandomWord() {
         random = new Random();

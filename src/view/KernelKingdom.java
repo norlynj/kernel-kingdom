@@ -29,7 +29,7 @@ public class KernelKingdom {
 
         startButton.addActionListener(e-> {
             switchPanel(menuPanel, mainGamePanel);
-//            newGame();
+            newGame();
         });
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
         aboutButton.addActionListener(e-> switchPanel(menuPanel, aboutPanel));
@@ -43,7 +43,8 @@ public class KernelKingdom {
         mainGamePanel = new Panel(false, "main-game-panel.png");
         //Blanks for the word
         blankLetters = new JLabel();
-
+        blankLetters.setBounds(mainGamePanel.getWidth()/2, 87, 293, 71);
+//        blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 40));
 
         // Maps panel
         mapsPanel = new Panel(true, "new-state.png", 47, 200, 338, 294);
@@ -111,15 +112,16 @@ public class KernelKingdom {
 
     private void newGame(){
         Game game = new Game();
-        while(game.alive()) {
-            showMaps();
+//        while(game.alive()) {
+            showMaps(game.getCurrentGuess());
             changeBackground();
             updateKeyboards();
-            updateBlankSpaces();
-        }
+            updateBlankSpaces(game.getCurrentGuess());
+//        }
     }
 
-    private void updateBlankSpaces() {
+    private void updateBlankSpaces(StringBuilder guesses) {
+        blankLetters.setText(guesses.toString());
     }
 
     private void updateKeyboards() {
@@ -128,7 +130,8 @@ public class KernelKingdom {
     private void changeBackground() {
     }
 
-    private void showMaps() {
+
+    private void showMaps(StringBuilder guesses) {
     }
 
 }
