@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class KernelKingdom {
     private final Frame frame;
@@ -6,7 +7,8 @@ public class KernelKingdom {
     private Panel mainGamePanel;
     private Panel instructionsPanel;
     private Panel aboutPanel;
-
+    private JButton[] letterButtons;
+    private static final Color BUTTON_COLOR = new Color(245, 245, 245);
     public KernelKingdom() {
         frame = new Frame("Kernel Kingdom");
 
@@ -22,7 +24,7 @@ public class KernelKingdom {
 
         startButton.addActionListener(e-> {
             switchPanel(menuPanel, mainGamePanel);
-            newGame();
+//            newGame();
         });
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
         aboutButton.addActionListener(e-> switchPanel(menuPanel, aboutPanel));
@@ -34,6 +36,25 @@ public class KernelKingdom {
 
         // MAIN GAME PANEL
         mainGamePanel = new Panel(false, "main-game-panel.png");
+        int buttonBoundsX = 17;
+        int buttonBoundsY = 22;
+        int buttonDimensions = 43;
+        int incrementer = 10;
+
+        Panel letterButtonsPanel = new Panel(405, 150, 300, 365);
+        letterButtons = new ImageButton[26];
+        for (int i = 0; i < 26; i++) {
+
+            letterButtons[i] = new ImageButton("a.png");
+            letterButtons[i].setBackground(BUTTON_COLOR);
+            letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
+            letterButtonsPanel.add(letterButtons[i]);
+            buttonBoundsX  += 55;
+        }
+        letterButtonsPanel.setVisible(true);
+        mainGamePanel.add(letterButtonsPanel);
+
+
 
         // INSTRUCTIONS PANEL
         instructionsPanel = new Panel(false, "instructions-panel.png");
