@@ -20,7 +20,10 @@ public class KernelKingdom {
         instructionsButton.setBounds(74, 400, 200, 70);
         aboutButton.setBounds(74, 500, 200, 70);
 
-        startButton.addActionListener(e-> switchPanel(menuPanel, mainGamePanel));
+        startButton.addActionListener(e-> {
+            switchPanel(menuPanel, mainGamePanel);
+            newGame();
+        });
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
         aboutButton.addActionListener(e-> switchPanel(menuPanel, aboutPanel));
 
@@ -59,4 +62,27 @@ public class KernelKingdom {
         one.setVisible(false);
         two.setVisible(true);
     }
+
+    private void newGame(){
+        Game game = new Game();
+        while(game.alive()) {
+            showMaps();
+            changeBackground();
+            updateKeyboards();
+            updateBlankSpaces();
+        }
+    }
+
+    private void updateBlankSpaces() {
+    }
+
+    private void updateKeyboards() {
+    }
+
+    private void changeBackground() {
+    }
+
+    private void showMaps() {
+    }
+
 }
