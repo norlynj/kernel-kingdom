@@ -28,7 +28,7 @@ public class Button extends JButton {
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new AudioPlayer("click.wav").play(); //click sound
+                new AudioPlayer("click.wav").play(); //click sound
             }
         });
 
