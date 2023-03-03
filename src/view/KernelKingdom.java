@@ -39,7 +39,7 @@ public class KernelKingdom {
         int buttonBoundsX = 17;
         int buttonBoundsY = 22;
         int buttonDimensions = 43;
-        int incrementer = 10;
+        int incrementer = 55;
 
         Panel letterButtonsPanel = new Panel(405, 150, 300, 365);
         letterButtons = new ImageButton[26];
@@ -47,9 +47,18 @@ public class KernelKingdom {
 
             letterButtons[i] = new ImageButton("a.png");
             letterButtons[i].setBackground(BUTTON_COLOR);
-            letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
+            if ((i+1) % 5 == 0) {
+                letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
+                buttonBoundsX = 17;
+                buttonBoundsY += incrementer;
+            } else {
+                letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
+                buttonBoundsX += incrementer;
+
+            }
+
             letterButtonsPanel.add(letterButtons[i]);
-            buttonBoundsX  += 55;
+
         }
         letterButtonsPanel.setVisible(true);
         mainGamePanel.add(letterButtonsPanel);
