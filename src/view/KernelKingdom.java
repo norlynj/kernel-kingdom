@@ -11,7 +11,7 @@ public class KernelKingdom {
         frame = new Frame("Kernel Kingdom");
 
         // MAIN MENU PANEL
-        menuPanel = new Panel("menu.png");
+        menuPanel = new Panel("menu.gif");
         JButton startButton = new Button("start");
         JButton instructionsButton = new Button("instructions");
         JButton aboutButton = new Button("about");
