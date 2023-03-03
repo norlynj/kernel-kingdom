@@ -43,11 +43,11 @@ public class Game {
         }
     }
     private void loadWordsFromFile(String fileName) {
-        words = new ArrayList<>();
+        this.words = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                words.add(line.trim());
+                this.words.add(line.trim());
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -57,8 +57,10 @@ public class Game {
     private StringBuilder setBlanks() {
         currentGuess = new StringBuilder(wordToGuess);
         for (int i = 0; i < wordToGuess.length(); i++) {
-            if (wordToGuess.charAt(i) != ' ')
+            if (wordToGuess.charAt(i) != ' ') {
                 currentGuess.setCharAt(i, '_');
+            }
+
         }
         return currentGuess;
     }

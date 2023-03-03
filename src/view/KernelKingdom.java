@@ -43,9 +43,9 @@ public class KernelKingdom {
         mainGamePanel = new Panel(false, "main-game-panel.png");
         //Blanks for the word
         blankLetters = new JLabel();
-        blankLetters.setBounds(mainGamePanel.getWidth()/2, 87, 293, 71);
-//        blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 40));
-
+        blankLetters.setBounds(10, 87, 700, 71);
+        blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
+        blankLetters.setHorizontalAlignment(JLabel.CENTER);
         // Maps panel
         mapsPanel = new Panel(true, "new-state.png", 47, 200, 338, 294);
         // Keybroard buttons
@@ -121,6 +121,10 @@ public class KernelKingdom {
     }
 
     private void updateBlankSpaces(StringBuilder guesses) {
+        // print spaces between blanks
+        for (int i = guesses.length() - 1; i > 0; i--) {
+            guesses.insert(i, " ");
+        }
         blankLetters.setText(guesses.toString());
     }
 
