@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Frame extends JFrame {
+public class  Frame extends JFrame {
     JWindow window = new JWindow();
     public Frame(String name) {
         loadImage("src/resources/images/splashscreen.gif");  //SplashScreen
