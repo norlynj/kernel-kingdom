@@ -4,6 +4,11 @@ import java.awt.*;
 public class KernelKingdom {
     private final Frame frame;
     private Panel menuPanel;
+    private JLabel blankLetters;
+    private Panel mapsPanel;
+
+    private Panel letterButtonsPanel;
+
     private Panel mainGamePanel;
     private Panel instructionsPanel;
     private Panel aboutPanel;
@@ -36,16 +41,24 @@ public class KernelKingdom {
 
         // MAIN GAME PANEL
         mainGamePanel = new Panel(false, "main-game-panel.png");
+        //Blanks for the word
+        blankLetters = new JLabel();
+
+
+        // Maps panel
+        mapsPanel = new Panel(true, "new-state.png", 47, 200, 338, 294);
+        // Keybroard buttons
         int buttonBoundsX = 17;
         int buttonBoundsY = 22;
         int buttonDimensions = 43;
         int incrementer = 55;
-
-        Panel letterButtonsPanel = new Panel(405, 150, 300, 365);
+        letterButtonsPanel = new Panel(405, 170, 300, 365);
         letterButtons = new ImageButton[26];
         for (int i = 0; i < 26; i++) {
 
             letterButtons[i] = new ImageButton("a.png");
+//            letterButtons[i] = new ImageButton(Character.toString((char) ('a' + i)));
+
             letterButtons[i].setBackground(BUTTON_COLOR);
             if ((i+1) % 5 == 0) {
                 letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
@@ -61,6 +74,9 @@ public class KernelKingdom {
 
         }
         letterButtonsPanel.setVisible(true);
+
+        mainGamePanel.add(blankLetters);
+        mainGamePanel.add(mapsPanel);
         mainGamePanel.add(letterButtonsPanel);
 
 

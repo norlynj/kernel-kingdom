@@ -58,7 +58,7 @@ public class Game {
         return words.get(index);
     }
 
-    public String getWordToGuess() {
+    public String getFullWordToGuess() {
         return wordToGuess;
     }
 
