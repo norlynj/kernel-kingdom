@@ -39,6 +39,7 @@ public class Game {
         }
         if (currentGuess.toString().equals(wordToGuess)) {
             System.out.println("Congratulations, you guessed the word: " + wordToGuess);
+            words.remove(wordToGuess); // avoid repetition
             return;
         }
     }

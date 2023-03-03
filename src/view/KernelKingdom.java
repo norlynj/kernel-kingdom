@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class KernelKingdom {
     private final Frame frame;
@@ -12,8 +14,8 @@ public class KernelKingdom {
     private Panel mainGamePanel;
     private Panel instructionsPanel;
     private Panel aboutPanel;
-    private JButton[] letterButtons;
-    private static final Color BUTTON_COLOR = new Color(245, 245, 245);
+    private ImageButton[] letterButtons;
+    private Game game;
     public KernelKingdom() {
         frame = new Frame("Kernel Kingdom");
 
@@ -29,7 +31,8 @@ public class KernelKingdom {
 
         startButton.addActionListener(e-> {
             switchPanel(menuPanel, mainGamePanel);
-            newGame();
+            game = new Game();
+            updateBlankSpaces(game.getCurrentGuess());
         });
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
         aboutButton.addActionListener(e-> switchPanel(menuPanel, aboutPanel));
@@ -59,8 +62,14 @@ public class KernelKingdom {
 
             letterButtons[i] = new ImageButton("a.png");
 //            letterButtons[i] = new ImageButton(Character.toString((char) ('a' + i)));
-
-            letterButtons[i].setBackground(BUTTON_COLOR);
+            int finalI = i;
+            letterButtons[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    guess(letterButtons[finalI].getImageName().charAt(0));
+                    shake(frame);
+                }
+            });
             if ((i+1) % 5 == 0) {
                 letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
                 buttonBoundsX = 17;
@@ -105,14 +114,37 @@ public class KernelKingdom {
         frame.setVisible(true);
     }
 
+    private void shake(Frame mainWindow) {
+        int vibrationLength = 7;
+        int vibrationSpeed = 2;
+        try {
+            final int originalX = mainWindow.getLocationOnScreen().x;
+            final int originalY = mainWindow.getLocationOnScreen().y;
+            for (int i = 0; i < vibrationLength; i++) {
+                Thread.sleep(10);
+                mainWindow.setLocation(originalX, originalY + vibrationSpeed);
+                Thread.sleep(10);
+                mainWindow.setLocation(originalX, originalY - vibrationSpeed);
+                Thread.sleep(10);
+                mainWindow.setLocation(originalX + vibrationSpeed, originalY);
+                Thread.sleep(10);
+                mainWindow.setLocation(originalX, originalY);
+            }
+        }
+
+        catch (Exception err) {
+            err.printStackTrace();
+        }
+    }
+
     private void switchPanel(JPanel one, JPanel two){
         one.setVisible(false);
         two.setVisible(true);
     }
 
-    private void newGame(){
-        Game game = new Game();
+    private void guess(char letter){
 //        while(game.alive()) {
+            game.guess(letter);
             showMaps(game.getCurrentGuess());
             changeBackground();
             updateKeyboards();
@@ -122,10 +154,8 @@ public class KernelKingdom {
 
     private void updateBlankSpaces(StringBuilder guesses) {
         // print spaces between blanks
-        for (int i = guesses.length() - 1; i > 0; i--) {
-            guesses.insert(i, " ");
-        }
-        blankLetters.setText(guesses.toString());
+        String letters = guesses.toString().replace("", " ").trim();
+        blankLetters.setText(letters);
     }
 
     private void updateKeyboards() {
