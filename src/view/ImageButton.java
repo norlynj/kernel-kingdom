@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 //class for making an image button
@@ -31,7 +33,18 @@ public class ImageButton extends JButton {
     }
 
     public void setIcon(String imageName) {
-        setIcon(new ImageIcon(Objects.requireNonNull("src/resources/images/alphabet/" + imageName))); //img bg
+        setIcon(new ImageIcon(Objects.requireNonNull("src/resources/images/" + imageName))); //img bg
+    }
+
+    public void hover(String hover, String unhover) {
+        addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                setIcon("buttons/" + hover);
+            }
+            public void mouseExited(MouseEvent e) {
+                setIcon("buttons/" + unhover);
+            }
+        });
     }
 
 }
