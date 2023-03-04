@@ -6,9 +6,6 @@ import java.util.Objects;
 public class ImageButton extends JButton {
     private String imageName;
 
-    public String getImageName() {
-        return imageName;
-    }
 
     public ImageButton(String imageName) {
         this(imageName, 300, 70);
@@ -23,7 +20,7 @@ public class ImageButton extends JButton {
         setSize(width, height);
         setBackground(new Color(0, 0, 0, 0));
         setOpaque(false);
-        setIcon(new ImageIcon(Objects.requireNonNull("src/resources/images/buttons/keyboard/" + imageName))); //img bg
+        this.setIcon(imageName);
         setVisible(true);
 
         addActionListener(e -> {
@@ -31,6 +28,10 @@ public class ImageButton extends JButton {
             System.out.println("click");
         });
 
+    }
+
+    public void setIcon(String imageName) {
+        setIcon(new ImageIcon(Objects.requireNonNull("src/resources/images/alphabet/" + imageName))); //img bg
     }
 
 }

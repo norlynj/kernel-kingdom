@@ -23,10 +23,11 @@ public class Game {
     }
 
     public boolean alive() {
+        System.out.println(memory);
         return memory > 0;
     }
 
-    public void guess(char guess) {
+    public boolean guess(char guess) {
         boolean correct = false;
         for (int i = 0; i < wordToGuess.length(); i++) {
             if (wordToGuess.charAt(i) == guess) {
@@ -35,13 +36,14 @@ public class Game {
             }
         }
         if (!correct) {
+            correct = false;
             memory--;
         }
         if (currentGuess.toString().equals(wordToGuess)) {
             System.out.println("Congratulations, you guessed the word: " + wordToGuess);
             words.remove(wordToGuess); // avoid repetition
-            return;
         }
+        return correct;
     }
     private void loadWordsFromFile(String fileName) {
         this.words = new ArrayList<>();

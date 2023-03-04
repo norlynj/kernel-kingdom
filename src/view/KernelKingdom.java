@@ -60,14 +60,14 @@ public class KernelKingdom {
         letterButtons = new ImageButton[26];
         for (int i = 0; i < 26; i++) {
 
-            letterButtons[i] = new ImageButton("a.png");
-//            letterButtons[i] = new ImageButton(Character.toString((char) ('a' + i)));
+            letterButtons[i] = new ImageButton("normal/" + Character.toString((char) ('A' + i)) + ".png");
+//            letterButtons[i] = new ImageButton(Character.toString((char) ('A' + i)));
             int finalI = i;
+            char buttonValue = (Character.toString((char) ('a' + i)) + ".png").charAt(0);
             letterButtons[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    guess(letterButtons[finalI].getImageName().charAt(0));
-                    shake(frame);
+                    guess(buttonValue, finalI);
                 }
             });
             if ((i+1) % 5 == 0) {
@@ -142,12 +142,19 @@ public class KernelKingdom {
         two.setVisible(true);
     }
 
-    private void guess(char letter){
+    private void guess(char letter, int button){
         if (game.alive()) {
-            game.guess(letter);
-            showMaps(game.getCurrentGuess());
-            changeBackground();
-            updateKeyboards();
+            System.out.println(letter);
+            if (game.guess(letter)) {
+                updateMaps(game.getCurrentGuess());
+                letterButtons[button].setIcon("selected/" + Character.toString((char) ('A' + button)) + ".png");
+            } else {
+                shake(frame);
+                changeBackground();
+                letterButtons[button].setIcon("incorrect/" + Character.toString((char) ('A' + button)) + ".png");
+
+            }
+//            letterButtons[button].setEnabled(false);
             updateBlankSpaces(game.getCurrentGuess());
         } else {
             System.out.println("Game over!");
@@ -158,17 +165,15 @@ public class KernelKingdom {
     private void updateBlankSpaces(StringBuilder guesses) {
         // print spaces between blanks
         String letters = guesses.toString().replace("", " ").trim();
+        System.out.println("letters" + letters);
         blankLetters.setText(letters);
-    }
-
-    private void updateKeyboards() {
     }
 
     private void changeBackground() {
     }
 
 
-    private void showMaps(StringBuilder guesses) {
+    private void updateMaps(StringBuilder guesses) {
     }
 
 }
