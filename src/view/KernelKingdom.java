@@ -36,6 +36,7 @@ public class KernelKingdom {
         startButton.addActionListener(e-> {
             switchPanel(menuPanel, mainGamePanel);
             game = new Game();
+            game.newGame();
             updateBlankSpaces(game.getCurrentGuess());
         });
         instructionsButton.addActionListener(e-> switchPanel(menuPanel, instructionsPanel));
@@ -75,7 +76,7 @@ public class KernelKingdom {
         menuPanel.add(aboutButton);
 
         // MAIN GAME PANEL
-        mainGamePanel = new Panel(false, "main-game-panel.png");
+        mainGamePanel = new Panel(false, "main-game-panel-5.png");
 
         //Blanks for the word
         blankLetters = new JLabel();
@@ -129,7 +130,12 @@ public class KernelKingdom {
         successsPanel = new Panel(false, "success-panel.png");
         restartButton = new ImageButton("buttons/restart.png");
         menuButton = new ImageButton("buttons/menu-button.png");
-//        restartButton.addActionListener();
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                restartGame();
+            }
+        });
         menuButton.addActionListener(e-> switchPanel(mainGamePanel, menuPanel));
 
         restartButton.addMouseListener(new MouseAdapter() {
@@ -229,7 +235,9 @@ public class KernelKingdom {
                 }
             } else {
                 shake(frame);
-                changeBackground();
+                if (game.getMemory() > 0) {
+                    changeBackground();
+                }
 //                letterButtons[button].setIcon("alphabet/incorrect/" + Character.toString((char) ('A' + button)) + ".png");
 
             }
@@ -253,10 +261,25 @@ public class KernelKingdom {
     }
 
     private void changeBackground() {
+        mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
     }
 
 
     private void updateMaps(StringBuilder guesses) {
+    }
+
+    private void restartGame() {
+        successsPanel.setVisible(false);
+        gameOverPanel.setVisible(false);
+        game.newGame();
+        updateBlankSpaces(game.getCurrentGuess());
+        updateKeyboard();
+    }
+
+    public void updateKeyboard() {
+        for (int i = 0; i < 26; i++) {
+            letterButtons[i].setEnabled(true);
+        }
     }
 
 }

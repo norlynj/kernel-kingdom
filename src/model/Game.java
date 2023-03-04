@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Game {
     private static final int MAX_MEMORY = 6;
+    private static final String textFile = "src/resources/OSwords.txt";
     private static ArrayList<String> words;
     private static Random random;
     private static String wordToGuess;
@@ -13,7 +14,10 @@ public class Game {
     private static int memory;
 
     public Game() {
-        loadWordsFromFile("src/resources/OSwords.txt");
+        loadWordsFromFile(textFile);
+    }
+
+    public void newGame() {
         this.wordToGuess = this.getRandomWord();
         this.currentGuess = this.setBlanks();
         System.out.println("wordToGuess: " + wordToGuess);
@@ -51,6 +55,10 @@ public class Game {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
+    }
+
+    public static int getMemory() {
+        return memory;
     }
 
     private StringBuilder setBlanks() {
