@@ -39,10 +39,6 @@ public class Game {
             correct = false;
             memory--;
         }
-        if (currentGuess.toString().equals(wordToGuess)) {
-            System.out.println("Congratulations, you guessed the word: " + wordToGuess);
-            words.remove(wordToGuess); // avoid repetition
-        }
         return correct;
     }
     private void loadWordsFromFile(String fileName) {
@@ -71,6 +67,16 @@ public class Game {
         random = new Random();
         int index = random.nextInt(words.size());
         return words.get(index);
+    }
+
+    public boolean success() {
+        if (currentGuess.toString().equals(wordToGuess)) {
+            System.out.println("success");
+            System.out.println("Congratulations, you guessed the word: " + wordToGuess);
+            words.remove(wordToGuess); // avoid repetition
+            return true;
+        }
+        return false;
     }
 
     public String getFullWordToGuess() {
