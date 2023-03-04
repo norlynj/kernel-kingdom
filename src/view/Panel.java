@@ -39,6 +39,7 @@ public class Panel extends JPanel {
 
     //allows one to add a bg image to the panel
     public void setImage(String imageName) {
-        background = new ImageIcon(Objects.requireNonNull(getClass().getResource("src/resources/images" + imageName)));
+        this.background = new ImageIcon("src/resources/images/" + imageName);
+        repaint();
     }
 }
