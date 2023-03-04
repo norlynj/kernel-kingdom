@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private static final int MAX_MEMORY = 6;
+    private static final int MAX_MEMORY = 5;
     private static final String textFile = "src/resources/OSwords.txt";
     private static ArrayList<String> words;
     private static Random random;
