@@ -143,13 +143,16 @@ public class KernelKingdom {
     }
 
     private void guess(char letter){
-//        while(game.alive()) {
+        if (game.alive()) {
             game.guess(letter);
             showMaps(game.getCurrentGuess());
             changeBackground();
             updateKeyboards();
             updateBlankSpaces(game.getCurrentGuess());
-//        }
+        } else {
+            System.out.println("Game over!");
+            System.exit(0);
+        }
     }
 
     private void updateBlankSpaces(StringBuilder guesses) {
