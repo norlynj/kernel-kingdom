@@ -4,7 +4,7 @@ import java.awt.*;
 public class  Frame extends JFrame {
     JWindow window = new JWindow();
     public Frame(String name) {
-        loadImage("src/resources/images/splashscreen.gif");  //SplashScreen
+//        loadImage("src/resources/images/splashscreen.gif");  //SplashScreen
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(name);
