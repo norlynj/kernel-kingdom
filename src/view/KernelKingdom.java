@@ -1,15 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class KernelKingdom {
     private final Frame frame;
     private Panel menuPanel;
     private JLabel blankLetters;
     private Panel mapsPanel;
+    private Panel successsPanel;
+    private Panel gameOverPanel;
 
     private Panel letterButtonsPanel;
 
@@ -46,6 +45,8 @@ public class KernelKingdom {
 
         // MAIN GAME PANEL
         mainGamePanel = new Panel(false, "main-game-panel.png");
+        successsPanel = new Panel(false, "success-panel.png");
+        gameOverPanel = new Panel(false, "game-over-panel.png");
         //Blanks for the word
         blankLetters = new JLabel();
         blankLetters.setBounds(10, 87, 700, 71);
@@ -95,9 +96,12 @@ public class KernelKingdom {
         }
         letterButtonsPanel.setVisible(true);
 
+        mainGamePanel.add(successsPanel);
+        mainGamePanel.add(gameOverPanel);
         mainGamePanel.add(blankLetters);
         mainGamePanel.add(mapsPanel);
         mainGamePanel.add(letterButtonsPanel);
+
 
 
 
@@ -153,28 +157,33 @@ public class KernelKingdom {
     }
 
     private void guess(char letter, int button){
+        letterButtons[button].setEnabled(false); // disable button so that the user can't click on it.
         if (game.alive()) {
             System.out.println(letter);
             if (game.guess(letter)) {
                 updateMaps(game.getCurrentGuess());
-                letterButtons[button].setIcon("selected/" + Character.toString((char) ('A' + button)) + ".png");
+//                letterButtons[button].setIcon("selected/" + Character.toString((char) ('A' + button)) + ".png");
+                if (game.success()) {
+                    successsPanel.setVisible(true);
+                }
             } else {
                 shake(frame);
                 changeBackground();
-                letterButtons[button].setIcon("incorrect/" + Character.toString((char) ('A' + button)) + ".png");
+//                letterButtons[button].setIcon("incorrect/" + Character.toString((char) ('A' + button)) + ".png");
 
             }
 //            letterButtons[button].setEnabled(false);
             updateBlankSpaces(game.getCurrentGuess());
         } else {
+            gameOverPanel.setVisible(true);
             System.out.println("Game over!");
-            System.exit(0);
         }
     }
 
     private void updateBlankSpaces(StringBuilder guesses) {
         // print spaces between blanks
         String letters = guesses.toString().replace("", " ").trim();
+
         System.out.println("letters" + letters);
         blankLetters.setText(letters);
     }
