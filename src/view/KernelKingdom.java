@@ -184,8 +184,7 @@ public class KernelKingdom {
         backAboutMenuButton.setBounds(300, 538, 100, 70);
         backAboutMenuButton.addActionListener(e -> switchPanel(aboutPanel, menuPanel));
         aboutPanel.add(backAboutMenuButton);
-
-
+        
         frame.add(menuPanel);
         frame.add(mainGamePanel);
         frame.add(instructionsPanel);
