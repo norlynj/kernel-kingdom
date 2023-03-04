@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class KernelKingdom {
     private final Frame frame;
@@ -63,11 +65,19 @@ public class KernelKingdom {
             letterButtons[i] = new ImageButton("normal/" + Character.toString((char) ('A' + i)) + ".png");
 //            letterButtons[i] = new ImageButton(Character.toString((char) ('A' + i)));
             int finalI = i;
-            char buttonValue = (Character.toString((char) ('a' + i)) + ".png").charAt(0);
+            char buttonValue = (Character.toString((char) ('A' + i)) + ".png").charAt(0);
             letterButtons[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    guess(buttonValue, finalI);
+                    guess(Character.toLowerCase(buttonValue), finalI);
+                }
+            });
+            letterButtons[i].addMouseListener(new MouseAdapter() {
+                public void mouseEntered(MouseEvent e) {
+                    letterButtons[finalI].setIcon("selected/" + buttonValue + ".png");
+                }
+                public void mouseExited(MouseEvent e) {
+                    letterButtons[finalI].setIcon("normal/" + buttonValue + ".png");
                 }
             });
             if ((i+1) % 5 == 0) {
