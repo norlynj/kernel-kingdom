@@ -21,10 +21,37 @@ public class MainGamePanel extends Panel {
     private Panel instructionsPanel;
     private Panel aboutPanel;
     private ImageButton[] letterButtons;
-    private ImageButton restartButton;
-    private ImageButton menuButton;
+    private ImageButton restartButtonS;
+    private ImageButton menuButtonS;
+    private ImageButton restartButtonGO;
+    private ImageButton menuButtonGO;
     private JLabel blankLetters;
-    
+
+    public Panel getSuccess() {
+        return success;
+    }
+
+    public Panel getGameOver() {
+        return gameOver;
+    }
+
+    public Panel getMapsPanel() {
+        return mapsPanel;
+    }
+
+    public Panel getLetterButtonsPanel() {
+        return letterButtonsPanel;
+    }
+
+    public ImageButton[] getLetterButtons() {
+        return letterButtons;
+    }
+
+
+
+    public JLabel getBlankLetters() {
+        return blankLetters;
+    }
 
     public MainGamePanel () {
         super("main-game-panel-5.png");
@@ -80,42 +107,68 @@ public class MainGamePanel extends Panel {
         letterButtonsPanel.setVisible(true);
 
         success = new Panel(false, "success-panel.png");
-        restartButton = new ImageButton("buttons/restart.png");
-        menuButton = new ImageButton("buttons/menu-button.png");
+        restartButtonS = new ImageButton("buttons/restart.png");
+        menuButtonS = new ImageButton("buttons/menu-button.png");
 
-        restartButton.setBounds(66, 400, 254, 91);
-        menuButton.setBounds(59, 500, 171, 66);
-
-        restartButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                restartButton.setIcon("buttons/restart-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                restartButton.setIcon("buttons/restart.png");
-            }
-        });
-
-        menuButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                menuButton.setIcon("buttons/menu-button-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                menuButton.setIcon("buttons/menu-button.png");
-            }
-        });
+        restartButtonS.setBounds(66, 400, 254, 91);
+        menuButtonS.setBounds(59, 500, 171, 66);
 
 
         gameOver = new Panel(false, "game-over-panel.png");
+        restartButtonGO = new ImageButton("buttons/restart.png");
+        menuButtonGO = new ImageButton("buttons/menu-button.png");
 
-        success.add(restartButton);
-        success.add(menuButton);
+        restartButtonGO.setBounds(66, 400, 254, 91);
+        menuButtonGO.setBounds(59, 500, 171, 66);
+        setListeners();
+        success.add(restartButtonS);
+        success.add(menuButtonS);
+        gameOver.add(restartButtonGO);
+        gameOver.add(menuButtonGO);
         this.add(success);
         this.add(gameOver);
         this.add(blankLetters);
         this.add(mapsPanel);
         this.add(letterButtonsPanel);
 
+    }
 
+    private void setListeners() {
+        restartButtonS.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                restartButtonS.setIcon("buttons/restart-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                restartButtonS.setIcon("buttons/restart.png");
+            }
+        });
+
+        menuButtonS.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                menuButtonS.setIcon("buttons/menu-button-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                menuButtonS.setIcon("buttons/menu-button.png");
+            }
+        });
+
+        restartButtonGO.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                restartButtonGO.setIcon("buttons/restart-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                restartButtonGO.setIcon("buttons/restart.png");
+            }
+        });
+
+        menuButtonGO.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                menuButtonGO.setIcon("buttons/menu-button-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                menuButtonGO.setIcon("buttons/menu-button.png");
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -124,6 +177,7 @@ public class MainGamePanel extends Panel {
         frame.add(m);
         frame.setVisible(true);
     }
+
 
 
 }
