@@ -85,7 +85,7 @@ public class MainGamePanel extends Panel {
 
     public static void main(String[] args) {
         MainGamePanel m = new MainGamePanel();
-        Frame frame = new Frame("asdf");
+        Frame frame = new Frame("Main Game Panel");
         frame.add(m);
         frame.setVisible(true);
     }

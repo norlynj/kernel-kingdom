@@ -12,7 +12,7 @@ public class AboutPanel extends Panel{
 
     public static void main(String[] args) {
         AboutPanel m = new AboutPanel();
-        Frame frame = new Frame("asdf");
+        Frame frame = new Frame("About Panel");
         frame.add(m);
         frame.setVisible(true);
     }

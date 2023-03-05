@@ -45,7 +45,7 @@ public class MenuPanel extends Panel {
 
     public static void main(String[] args) {
         MenuPanel m = new MenuPanel();
-        Frame frame = new Frame("asdf");
+        Frame frame = new Frame("Menu Panel");
         frame.add(m);
         frame.setVisible(true);
     }

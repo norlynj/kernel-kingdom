@@ -12,7 +12,7 @@ public class InstructionsPanel extends Panel {
 
     public static void main(String[] args) {
         InstructionsPanel m = new InstructionsPanel();
-        Frame frame = new Frame("asdf");
+        Frame frame = new Frame("Instructions Panel");
         frame.add(m);
         frame.setVisible(true);
     }
