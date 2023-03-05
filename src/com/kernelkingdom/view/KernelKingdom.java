@@ -82,6 +82,8 @@ public class KernelKingdom {
     }
 
     private void guess(char letter, int button){
+        updateBlankSpaces(game.getCurrentGuess());
+
         if (game.alive()) {
             System.out.println(letter);
             if (game.guess(letter)) {
