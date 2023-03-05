@@ -47,7 +47,21 @@ public class MainGamePanel extends Panel {
         return letterButtons;
     }
 
+    public ImageButton getRestartButtonS() {
+        return restartButtonS;
+    }
 
+    public ImageButton getMenuButtonS() {
+        return menuButtonS;
+    }
+
+    public ImageButton getRestartButtonGO() {
+        return restartButtonGO;
+    }
+
+    public ImageButton getMenuButtonGO() {
+        return menuButtonGO;
+    }
 
     public JLabel getBlankLetters() {
         return blankLetters;

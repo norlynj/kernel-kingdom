@@ -65,6 +65,10 @@ public class KernelKingdom {
     }
 
     private void listenToMainGame(){
+        mainGamePanel.getRestartButtonS().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+        mainGamePanel.getRestartButtonGO().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+        mainGamePanel.getMenuButtonS().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+        mainGamePanel.getMenuButtonGO().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
     }
 
 
