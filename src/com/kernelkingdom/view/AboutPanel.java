@@ -11,6 +11,10 @@ public class AboutPanel extends Panel{
     private Panel about;
     private ImageButton menuButton;
 
+    public ImageButton getMenuButton() {
+        return menuButton;
+    }
+
     public AboutPanel () {
         super("about-and-text.gif");
         menuButton = new ImageButton("buttons/menu-button.png");

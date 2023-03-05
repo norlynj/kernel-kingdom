@@ -38,22 +38,36 @@ public class KernelKingdom {
         contentPane.add(instructionsPanel, "instructionsPanel");
         contentPane.add(aboutPanel, "aboutPanel");
 
-        menuPanel.getStartButton().addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() instanceof ImageButton) {
-                    cardLayout.show(contentPane, "mainGamePanel" );
-                }
-            }
-        });
+        listenToMenu();
+        listenToAbout();
+        listenToInstructions();
+        listenToMainGame();
 
         frame.add(contentPane);
         frame.pack();
         frame.setVisible(true);
 
-
     }
+
+    private void listenToMenu() {
+        menuPanel.getStartButton().addActionListener(e -> cardLayout.show(contentPane, "mainGamePanel" ));
+        menuPanel.getInstructionsButton().addActionListener(e -> cardLayout.show(contentPane, "instructionsPanel" ));
+        menuPanel.getAboutButton().addActionListener(e -> cardLayout.show(contentPane, "aboutPanel" ));
+    }
+
+    private void listenToInstructions() {
+        instructionsPanel.getMenuButton().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+    }
+
+    private void listenToAbout() {
+        aboutPanel.getMenuButton().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+    }
+
+    private void listenToMainGame(){
+    }
+
+
 
 
 }

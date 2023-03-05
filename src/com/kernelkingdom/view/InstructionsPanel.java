@@ -11,6 +11,10 @@ public class InstructionsPanel extends Panel {
     private Panel instructions;
     private ImageButton menuButton;
 
+    public ImageButton getMenuButton() {
+        return menuButton;
+    }
+
     public InstructionsPanel () {
         super("instructions-and-text.gif");
         menuButton = new ImageButton("buttons/menu-button.png");
