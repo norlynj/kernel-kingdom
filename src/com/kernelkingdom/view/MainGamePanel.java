@@ -27,14 +27,6 @@ public class MainGamePanel extends Panel {
     private ImageButton menuButtonGO;
     private JLabel blankLetters;
 
-    public Panel getSuccess() {
-        return success;
-    }
-
-    public Panel getGameOver() {
-        return gameOver;
-    }
-
     public Panel getMapsPanel() {
         return mapsPanel;
     }
@@ -63,8 +55,35 @@ public class MainGamePanel extends Panel {
         return menuButtonGO;
     }
 
-    public JLabel getBlankLetters() {
-        return blankLetters;
+    public void setSuccessVisibility() {
+        this.success.setVisible(true);
+        this.gameOver.setVisible(false);
+    }
+
+    public void setGameOverVisibility() {
+        this.gameOver.setVisible(true);
+        this.success.setVisible(false);
+    }
+
+    public void setMapsPanel() {
+        this.mapsPanel = mapsPanel;
+    }
+
+    public void setBlankLettersFont(Font font) {
+        blankLetters.setFont(font);
+    }
+
+    public void setBlankLettersText(String text) {
+        blankLetters.setText(text);
+    }
+
+    public void restart() {
+        this.gameOver.setVisible(false);
+        this.success.setVisible(false);
+        // update keyboard
+        for (int i = 0; i < 26; i++) {
+            this.letterButtons[i].setEnabled(true);
+        }
     }
 
     public MainGamePanel () {

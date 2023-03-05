@@ -1,12 +1,15 @@
+package model;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
     private static final int MAX_MEMORY = 5;
-    private static final String textFile = "src/resources/OSwords.txt";
+    private final String textFile = getClass().getResource("/resources/OSwords.txt").getPath();
     private static ArrayList<String> words;
     private static Random random;
     private static String wordToGuess;
