@@ -1,3 +1,5 @@
+package view.component;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -33,7 +35,7 @@ public class ImageButton extends JButton {
     }
 
     public void setIcon(String imageName) {
-        setIcon(new ImageIcon(Objects.requireNonNull("src/resources/images/" + imageName))); //img bg
+        setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/images/" + imageName)))); //img bg
     }
 
     public void hover(String hover, String unhover) {

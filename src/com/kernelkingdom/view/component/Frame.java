@@ -1,10 +1,13 @@
+package view.component;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class  Frame extends JFrame {
     JWindow window = new JWindow();
     public Frame(String name) {
-//        loadImage("src/resources/images/splashscreen.gif");  //SplashScreen
+//        loadImage("splashscreen.gif");  //SplashScreen
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle(name);
@@ -18,7 +21,7 @@ public class  Frame extends JFrame {
 
         //splash screen
         window.getContentPane().add(
-                new JLabel("", new ImageIcon(imageName), SwingConstants.CENTER));
+                new JLabel("", new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/images/" + imageName))), SwingConstants.CENTER));
 
         window.setSize(700, 700);
         window.setLocationRelativeTo(null); //set position to the center screen
