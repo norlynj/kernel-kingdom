@@ -9,6 +9,7 @@ import view.component.Panel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class MainGamePanel extends Panel {
     private Panel mainGame;
@@ -47,6 +48,21 @@ public class MainGamePanel extends Panel {
 //            letterButtons[i] = new ImageButton(Character.toString((char) ('A' + i)));
             int finalI = i;
             char buttonValue = (Character.toString((char) ('A' + i)) + ".png").charAt(0);
+            letterButtons[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    letterButtons[finalI].setEnabled(false);
+                }
+            });
+
+            letterButtons[i].addMouseListener(new MouseAdapter() {
+                public void mouseEntered(MouseEvent e) {
+                    letterButtons[finalI].setIcon("alphabet/selected/" + buttonValue + ".png");
+                }
+                public void mouseExited(MouseEvent e) {
+                    letterButtons[finalI].setIcon("alphabet/normal/" + buttonValue + ".png");
+                }
+            });
 
             if ((i+1) % 5 == 0) {
                 letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
@@ -69,6 +85,25 @@ public class MainGamePanel extends Panel {
 
         restartButton.setBounds(66, 400, 254, 91);
         menuButton.setBounds(59, 500, 171, 66);
+
+        restartButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                restartButton.setIcon("buttons/restart-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                restartButton.setIcon("buttons/restart.png");
+            }
+        });
+
+        menuButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                menuButton.setIcon("buttons/menu-button-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                menuButton.setIcon("buttons/menu-button.png");
+            }
+        });
+
 
         gameOver = new Panel(false, "game-over-panel.png");
 

@@ -25,6 +25,35 @@ public class MenuPanel extends Panel {
         instructionsButton.setBounds(70, 350, 390, 78);
         aboutButton.setBounds(74, 450, 179, 69);
 
+
+        // on hover listeners
+        startButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                startButton.setIcon("buttons/start-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                startButton.setIcon("buttons/start.png");
+            }
+        });
+
+        instructionsButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                instructionsButton.setIcon("buttons/instructions-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                instructionsButton.setIcon("buttons/instructions.png");
+            }
+        });
+
+        aboutButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                aboutButton.setIcon("buttons/about-hover.png");
+            }
+            public void mouseExited(MouseEvent e) {
+                aboutButton.setIcon("buttons/about.png");
+            }
+        });
+
         this.add(startButton);
         this.add(instructionsButton);
         this.add(aboutButton);
