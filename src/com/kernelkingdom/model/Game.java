@@ -1,8 +1,6 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +9,7 @@ import java.util.Set;
 
 public class Game {
     private static final int MAX_MEMORY = 5;
-    private final String textFile = getClass().getResource("/resources/OSwords.txt").getPath();
+    private final URL textFile = getClass().getResource("/resources/OSwords.txt");
     private static ArrayList<String> words;
     private static Random random;
     private static String wordToGuess;
@@ -19,12 +17,17 @@ public class Game {
     private static int memory;
 
     public Game() {
-        loadWordsFromFile(textFile);
+        assert textFile != null;
+        try {
+            loadWordsFromFile(textFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void newGame() {
-        this.wordToGuess = this.getRandomWord();
-        this.currentGuess = this.setBlanks();
+        wordToGuess = this.getRandomWord();
+        currentGuess = this.setBlanks();
         System.out.println("wordToGuess: " + wordToGuess);
         System.out.println("currentGuess: " + currentGuess);
         System.out.println("words: " + words);
@@ -50,16 +53,15 @@ public class Game {
         }
         return correct;
     }
-    private void loadWordsFromFile(String fileName) {
-        this.words = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                this.words.add(line.trim());
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+    private void loadWordsFromFile(URL fileName) throws IOException {
+        words = new ArrayList<>();
+        InputStream input = fileName.openStream();
+        BufferedReader br = new BufferedReader(new InputStreamReader(input, "ISO8859_7"));
+        String line;
+        while ((line = br.readLine()) != null) {
+            words.add(line.trim());
         }
+
     }
 
     public static int getMemory() {
