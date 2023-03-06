@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Game {
     private static final int MAX_MEMORY = 5;
@@ -96,5 +98,33 @@ public class Game {
 
     public StringBuilder getCurrentGuess() {
         return currentGuess;
+    }
+
+    public double progress() {
+        String word = wordToGuess.toString();
+        Set<Character> uniqueChars = new HashSet<>();
+        for (int i = 0; i < word.length(); i++) {
+            uniqueChars.add(word.charAt(i));
+        }
+
+        int totalUniqueChars = uniqueChars.size();
+        int correctlyGuessedUniqueChars = 0;
+
+        String guess = currentGuess.toString();
+        Set<Character> guessedChars = new HashSet<>();
+        for (int i = 0; i < guess.length(); i++) {
+            if (guess.charAt(i) != '_')
+                guessedChars.add(guess.charAt(i));
+        }
+
+        for (char c : guessedChars) {
+            if (uniqueChars.contains(c)) {
+                correctlyGuessedUniqueChars++;
+            }
+        }
+        System.out.println("uniqueChars:" + uniqueChars);
+        System.out.println("guessedChars:" + guessedChars);
+
+        return ((double) correctlyGuessedUniqueChars / totalUniqueChars) * 100;
     }
 }

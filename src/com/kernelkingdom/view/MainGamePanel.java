@@ -62,8 +62,8 @@ public class MainGamePanel extends Panel {
         this.success.setVisible(false);
     }
 
-    public void setMapsPanel() {
-        this.mapsPanel = mapsPanel;
+    public void setMaps(String image) {
+        mapsPanel.setImage(image);
     }
 
     public void setBlankLettersFont(Font font) {

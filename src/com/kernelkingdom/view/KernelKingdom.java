@@ -132,6 +132,18 @@ public class KernelKingdom {
     }
 
     private void updateMaps(StringBuilder currentGuess) {
+//        - new(0) ready(25) run(50) terminate(100)
+//        - the length of unique characters in a word should be the basis of map movement
+        System.out.println("game progress:" + game.progress());
+        double progress = game.progress();
+
+        if (progress == 100) {
+            mainGamePanel.setMaps("maps/terminate-state.png");
+        } else if (progress >= 50) {
+            mainGamePanel.setMaps("maps/running-state.png");
+        } else if (progress >= 25) {
+            mainGamePanel.setMaps("maps/ready-state.png");
+        }
     }
 
     private void restartGame() {
