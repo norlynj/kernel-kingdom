@@ -2,10 +2,7 @@ package view;
 
 import view.component.ImageButton;
 import view.component.Frame;
-
 import view.component.Panel;
-
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -210,7 +207,5 @@ public class MainGamePanel extends Panel {
         frame.add(m);
         frame.setVisible(true);
     }
-
-
 
 }
