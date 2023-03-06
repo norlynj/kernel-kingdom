@@ -70,8 +70,14 @@ public class KernelKingdom {
     private void listenToMainGame(){
         mainGamePanel.getRestartButtonS().addActionListener(e -> restartGame());
         mainGamePanel.getRestartButtonGO().addActionListener(e -> restartGame());
-        mainGamePanel.getMenuButtonS().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
-        mainGamePanel.getMenuButtonGO().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
+        mainGamePanel.getMenuButtonS().addActionListener(e -> {
+            cardLayout.show(contentPane, "menuPanel" );
+            restartGame();
+        });
+        mainGamePanel.getMenuButtonGO().addActionListener(e -> {
+            cardLayout.show(contentPane, "menuPanel" );
+            restartGame();
+        });
 
         ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
         for (int i = 0; i < 26; i++){
@@ -132,6 +138,7 @@ public class KernelKingdom {
         game.newGame();
         mainGamePanel.restart();
         updateBlankSpaces(game.getCurrentGuess());
+        updateBackground();
     }
 
     private void shake(Frame mainWindow) {
