@@ -22,6 +22,7 @@ public class MainGamePanel extends Panel {
     private ImageButton menuButtonS;
     private ImageButton restartButtonGO;
     private ImageButton menuButtonGO;
+    private ImageButton music;
     private JLabel blankLetters;
 
     public Panel getMapsPanel() {
@@ -150,6 +151,10 @@ public class MainGamePanel extends Panel {
 
         restartButtonGO.setBounds(66, 400, 254, 91);
         menuButtonGO.setBounds(59, 500, 171, 66);
+
+        music = new ImageButton("buttons/volume-on.png");
+        music.setBounds(630,630,40,40);
+
         setListeners();
         success.add(restartButtonS);
         success.add(menuButtonS);
@@ -160,6 +165,7 @@ public class MainGamePanel extends Panel {
         this.add(blankLetters);
         this.add(mapsPanel);
         this.add(letterButtonsPanel);
+        this.add(music);
 
     }
 
@@ -197,6 +203,18 @@ public class MainGamePanel extends Panel {
             }
             public void mouseExited(MouseEvent e) {
                 menuButtonGO.setIcon("buttons/menu-button.png");
+            }
+        });
+
+        music.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                music.setIcon("buttons/volume-on-hover.png");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                music.setIcon("buttons/volume-on.png");
             }
         });
     }

@@ -7,12 +7,14 @@ import view.component.Panel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MenuPanel extends Panel {
     private Panel menu;
-    ImageButton startButton;
-    ImageButton instructionsButton;
-    ImageButton aboutButton;
+    private ImageButton startButton;
+    private ImageButton instructionsButton;
+    private ImageButton aboutButton;
+    private ImageButton music;
 
     public MenuPanel () {
         super("menu.gif");
@@ -54,11 +56,28 @@ public class MenuPanel extends Panel {
             }
         });
 
+        music = new ImageButton("buttons/volume-on.png");
+        music.setBounds(630,630,40,40);
+        music.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                music.setIcon("buttons/volume-on-hover.png");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                music.setIcon("buttons/volume-on.png");
+            }
+        });
+
         this.add(startButton);
         this.add(instructionsButton);
         this.add(aboutButton);
-
+        this.add(music);
     }
+    public ImageButton getMusic(){
+        return music;
+   }
 
     public ImageButton getStartButton() {
         return startButton;

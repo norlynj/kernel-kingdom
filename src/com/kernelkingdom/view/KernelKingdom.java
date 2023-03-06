@@ -1,6 +1,7 @@
 package view;
 
 import model.Game;
+import view.component.AudioPlayer;
 import  view.component.ImageButton;
 import  view.component.Frame;
 
@@ -17,6 +18,8 @@ public class KernelKingdom {
     private Panel contentPane;
     private CardLayout cardLayout;
     private Game game;
+
+    private AudioPlayer audio;
 
     public KernelKingdom() {
         frame = new Frame("Kernel Kingdom");
@@ -86,6 +89,15 @@ public class KernelKingdom {
             letterButtons[i].addActionListener(e ->  guess(Character.toLowerCase(buttonValue), finalI));
         }
 
+    }
+
+    private void listenToMusic(){
+        menuPanel.getMusic().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void guess(char letter, int button){
