@@ -104,7 +104,7 @@ public class KernelKingdom {
         }
     }
     private void correct() {
-        updateMaps(game.getCurrentGuess());
+        updateMaps();
         if (game.success()) {
             mainGamePanel.setSuccessVisibility();
 
@@ -131,7 +131,7 @@ public class KernelKingdom {
         mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
     }
 
-    private void updateMaps(StringBuilder currentGuess) {
+    private void updateMaps() {
 //        - new(0) ready(25) run(50) terminate(100)
 //        - the length of unique characters in a word should be the basis of map movement
         System.out.println("game progress:" + game.progress());
@@ -143,6 +143,8 @@ public class KernelKingdom {
             mainGamePanel.setMaps("maps/running-state.png");
         } else if (progress >= 25) {
             mainGamePanel.setMaps("maps/ready-state.png");
+        } else {
+            mainGamePanel.setMaps("maps/new-state.png");
         }
     }
 
@@ -150,6 +152,7 @@ public class KernelKingdom {
         game.newGame();
         mainGamePanel.restart();
         updateBlankSpaces(game.getCurrentGuess());
+        updateMaps();
         updateBackground();
     }
 
