@@ -18,8 +18,3 @@ graphical user interface
 multiprogramming
 registers
 monolithic architecture
-
-
-
-
-
