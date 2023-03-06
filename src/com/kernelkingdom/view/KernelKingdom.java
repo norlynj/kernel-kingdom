@@ -28,6 +28,7 @@ public class KernelKingdom {
         instructionsPanel = new InstructionsPanel();
         aboutPanel = new AboutPanel();
         mainGamePanel = new MainGamePanel();
+        updateBlankSpaces(game.getCurrentGuess());
 
         // set up the content pane and card layout
         contentPane = new Panel();
@@ -68,8 +69,8 @@ public class KernelKingdom {
 
     private void listenToMainGame(){
         mainGamePanel.getRestartButtonS().addActionListener(e -> restartGame());
-        mainGamePanel.getRestartButtonGO().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
-        mainGamePanel.getMenuButtonS().addActionListener(e -> restartGame());
+        mainGamePanel.getRestartButtonGO().addActionListener(e -> restartGame());
+        mainGamePanel.getMenuButtonS().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
         mainGamePanel.getMenuButtonGO().addActionListener(e -> cardLayout.show(contentPane, "menuPanel" ));
 
         ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
@@ -82,7 +83,6 @@ public class KernelKingdom {
     }
 
     private void guess(char letter, int button){
-        updateBlankSpaces(game.getCurrentGuess());
 
         if (game.alive()) {
             System.out.println(letter);
