@@ -138,6 +138,7 @@ public class KernelKingdom {
     }
 
     private void incorrect() {
+        new AudioPlayer("wrong.wav").play();
         shake(frame);
         if (game.getMemory() > 0) {
             updateBackground();
@@ -154,7 +155,7 @@ public class KernelKingdom {
     }
 
     private void updateBackground() {
-        mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
+//        mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
     }
 
     private void updateMaps() {
