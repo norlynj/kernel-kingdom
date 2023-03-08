@@ -22,6 +22,8 @@ public class MainGamePanel extends Panel {
     private ImageButton menuButtonS;
     private ImageButton restartButtonGO;
     private ImageButton menuButtonGO;
+    private ImageButton musicStop;
+    private ImageButton musicOn;
     private JLabel blankLetters;
 
     public Panel getMapsPanel() {
@@ -147,10 +149,19 @@ public class MainGamePanel extends Panel {
         gameOver = new Panel(false, "game-over-panel.png");
         restartButtonGO = new ImageButton("buttons/restart.png");
         menuButtonGO = new ImageButton("buttons/menu-button.png");
+        musicStop = new ImageButton("buttons/volume-off.png");
+        musicOn = new ImageButton("buttons/volume-on.png");
 
         restartButtonGO.setBounds(66, 400, 254, 91);
         menuButtonGO.setBounds(59, 500, 171, 66);
+        musicStop.setBounds(630,630,40,40);
+        musicOn.setBounds(630,630,40,40);
+
         setListeners();
+
+        musicStop.setVisible(false);
+        musicOn.setVisible(true);
+
         success.add(restartButtonS);
         success.add(menuButtonS);
         gameOver.add(restartButtonGO);
@@ -160,7 +171,17 @@ public class MainGamePanel extends Panel {
         this.add(blankLetters);
         this.add(mapsPanel);
         this.add(letterButtonsPanel);
+        this.add(musicStop);
+        this.add(musicOn);
 
+    }
+
+    public ImageButton getMusicStop() {
+        return musicStop;
+    }
+
+    public ImageButton getMusicOn() {
+        return musicOn;
     }
 
     private void setListeners() {
@@ -199,8 +220,41 @@ public class MainGamePanel extends Panel {
                 menuButtonGO.setIcon("buttons/menu-button.png");
             }
         });
+
+        musicStop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                musicStop.setIcon("buttons/volume-on-hover.png");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                musicStop.setIcon("buttons/volume-off.png");
+            }
+        });
+
+        musicOn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                musicOn.setIcon("buttons/volume-off-hover.png");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                musicOn.setIcon("buttons/volume-on.png");
+            }
+        });
     }
 
+    public void musicClick() {
+        if (musicStop.isVisible()){
+            musicOn.setVisible(true);
+            musicStop.setVisible(false);
+        } else {
+            musicOn.setVisible(false);
+            musicStop.setVisible(true);
+        }
+    }
     public static void main(String[] args) {
         MainGamePanel m = new MainGamePanel();
         Frame frame = new Frame("Main Game Panel");
