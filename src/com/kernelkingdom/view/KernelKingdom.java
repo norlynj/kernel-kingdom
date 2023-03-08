@@ -156,7 +156,7 @@ public class KernelKingdom {
     }
 
     private void updateBackground() {
-//        mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
+        mainGamePanel.setImage("main-game-panel-" + game.getMemory() + ".png");
     }
 
     private void updateMaps() {
