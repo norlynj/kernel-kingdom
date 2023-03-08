@@ -14,7 +14,9 @@ public class MenuPanel extends Panel {
     private ImageButton startButton;
     private ImageButton instructionsButton;
     private ImageButton aboutButton;
-    private ImageButton music;
+
+    private ImageButton musicStop;
+    private ImageButton musicOn;
 
     public MenuPanel () {
         super("menu.gif");
@@ -22,12 +24,48 @@ public class MenuPanel extends Panel {
         startButton = new ImageButton("buttons/start.png");
         instructionsButton = new ImageButton("buttons/instructions.png");
         aboutButton = new ImageButton("buttons/about.png");
+        musicStop = new ImageButton("buttons/volume-off.png");
+        musicOn = new ImageButton("buttons/volume-on.png");
 
         startButton.setBounds(74, 250, 187, 72);
         instructionsButton.setBounds(70, 350, 390, 78);
         aboutButton.setBounds(74, 450, 179, 69);
+        musicStop.setBounds(630,630,40,40);
+        musicOn.setBounds(630,630,40,40);
 
+        musicStop.setVisible(true);
+        musicOn.setVisible(false);
 
+        setListeners();
+
+        this.add(startButton);
+        this.add(instructionsButton);
+        this.add(aboutButton);
+        this.add(musicStop);
+        this.add(musicOn);
+    }
+
+    public ImageButton getMusicStop() {
+        return musicStop;
+    }
+
+    public ImageButton getMusicOn() {
+        return musicOn;
+    }
+
+    public ImageButton getStartButton() {
+        return startButton;
+    }
+
+    public ImageButton getInstructionsButton() {
+        return instructionsButton;
+    }
+
+    public ImageButton getAboutButton() {
+        return aboutButton;
+    }
+
+    private void setListeners(){
         // on hover listeners
         startButton.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
@@ -56,39 +94,40 @@ public class MenuPanel extends Panel {
             }
         });
 
-        music = new ImageButton("buttons/volume-on.png");
-        music.setBounds(630,630,40,40);
-        music.addMouseListener(new MouseAdapter() {
+
+        musicStop.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                music.setIcon("buttons/volume-on-hover.png");
+                musicStop.setIcon("buttons/volume-off-hover.png");
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                music.setIcon("buttons/volume-on.png");
+                musicStop.setIcon("buttons/volume-off.png");
             }
         });
 
-        this.add(startButton);
-        this.add(instructionsButton);
-        this.add(aboutButton);
-        this.add(music);
-    }
-    public ImageButton getMusic(){
-        return music;
-   }
+        musicOn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                musicStop.setIcon("buttons/volume-on-hover.png");
+            }
 
-    public ImageButton getStartButton() {
-        return startButton;
-    }
-
-    public ImageButton getInstructionsButton() {
-        return instructionsButton;
+            @Override
+            public void mouseExited(MouseEvent e) {
+                musicStop.setIcon("buttons/volume-on.png");
+            }
+        });
     }
 
-    public ImageButton getAboutButton() {
-        return aboutButton;
+    public void musicClick() {
+        if (musicStop.isVisible()){
+            musicOn.setVisible(true);
+            musicStop.setVisible(false);
+        } else {
+            musicOn.setVisible(false);
+            musicStop.setVisible(true);
+        }
     }
 
     public static void main(String[] args) {

@@ -49,6 +49,7 @@ public class KernelKingdom {
         listenToAbout();
         listenToInstructions();
         listenToMainGame();
+        listenToMusic();
 
         frame.add(contentPane);
         frame.pack();
@@ -92,11 +93,17 @@ public class KernelKingdom {
     }
 
     private void listenToMusic(){
-        menuPanel.getMusic().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        menuPanel.getMusicStop().addActionListener(e -> {
+            menuPanel.musicClick();
+        });
+        menuPanel.getMusicOn().addActionListener(e -> {
+            menuPanel.musicClick();
+        });
+        mainGamePanel.getMusicStop().addActionListener(e -> {
+            mainGamePanel.musicClick();
+        });
+        mainGamePanel.getMusicOn().addActionListener(e -> {
+            mainGamePanel.musicClick();
         });
     }
 
@@ -189,10 +196,5 @@ public class KernelKingdom {
         catch (Exception err) {
             err.printStackTrace();
         }
-    }
-
-    private void switchPanel(JPanel one, JPanel two){
-        one.setVisible(false);
-        two.setVisible(true);
     }
 }
