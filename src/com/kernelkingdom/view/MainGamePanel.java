@@ -24,7 +24,7 @@ public class MainGamePanel extends Panel {
     private ImageButton menuButtonGO;
     private ImageButton musicStop;
     private ImageButton musicOn;
-    private ImageButton loop;
+    private ImageButton restart;
     private JLabel blankLetters;
 
     public Panel getMapsPanel() {
@@ -145,13 +145,13 @@ public class MainGamePanel extends Panel {
         menuButtonGO = new ImageButton("buttons/menu-button.png");
         musicStop = new ImageButton("buttons/volume-off.png");
         musicOn = new ImageButton("buttons/volume-on.png");
-        loop = new ImageButton("buttons/loop.png");
+        restart = new ImageButton("buttons/loop.png");
 
         restartButtonGO.setBounds(66, 400, 254, 91);
         menuButtonGO.setBounds(59, 500, 171, 66);
         musicStop.setBounds(630,630,40,40);
         musicOn.setBounds(630,630,40,40);
-        loop.setBounds(560,630,40,40);
+        restart.setBounds(560,630,40,40);
 
         setListeners();
 
@@ -169,7 +169,7 @@ public class MainGamePanel extends Panel {
         this.add(letterButtonsPanel);
         this.add(musicStop);
         this.add(musicOn);
-        this.add(loop);
+        this.add(restart);
 
     }
 
@@ -188,7 +188,11 @@ public class MainGamePanel extends Panel {
         menuButtonGO.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
         musicStop.hover("buttons/volume-on-hover.png", "buttons/volume-off.png");
         musicOn.hover("buttons/volume-off-hover.png", "buttons/volume-on.png");
-        loop.hover("buttons/loop-hover.png", "buttons/loop.png");
+        restart.hover("buttons/loop-hover.png", "buttons/loop.png");
+    }
+
+    public ImageButton getRestart() {
+        return restart;
     }
 
     public void musicClick() {
