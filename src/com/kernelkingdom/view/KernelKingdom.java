@@ -22,10 +22,11 @@ public class KernelKingdom {
     private AudioPlayer audio;
 
     public KernelKingdom() {
+        audio = new AudioPlayer("bgm.wav");
+        audio.play();
         frame = new Frame("Kernel Kingdom");
         game = new Game();
         game.newGame();
-
         // create Panels
         menuPanel = new MenuPanel();
         instructionsPanel = new InstructionsPanel();
@@ -93,18 +94,20 @@ public class KernelKingdom {
     }
 
     private void listenToMusic(){
-        menuPanel.getMusicStop().addActionListener(e -> {
-            menuPanel.musicClick();
-        });
-        menuPanel.getMusicOn().addActionListener(e -> {
-            menuPanel.musicClick();
-        });
-        mainGamePanel.getMusicStop().addActionListener(e -> {
-            mainGamePanel.musicClick();
-        });
-        mainGamePanel.getMusicOn().addActionListener(e -> {
-            mainGamePanel.musicClick();
-        });
+        menuPanel.getMusicStop().addActionListener(e -> soundClick());
+        menuPanel.getMusicOn().addActionListener(e -> soundClick());
+        mainGamePanel.getMusicStop().addActionListener(e -> soundClick());
+        mainGamePanel.getMusicOn().addActionListener(e -> soundClick());
+    }
+
+    public void soundClick() {
+        menuPanel.musicClick();
+        mainGamePanel.musicClick();
+        if (audio.isPlaying()) {
+            audio.stop();
+        } else {
+            audio.play();
+        }
     }
 
     private void guess(char letter, int button){

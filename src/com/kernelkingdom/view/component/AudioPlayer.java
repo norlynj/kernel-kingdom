@@ -46,4 +46,8 @@ public class AudioPlayer {
         clip.stop();
 
     }
+
+    public boolean isPlaying() {
+        return clip.isActive();
+    }
 }
