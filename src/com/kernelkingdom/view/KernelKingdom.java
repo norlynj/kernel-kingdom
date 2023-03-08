@@ -27,6 +27,7 @@ public class KernelKingdom {
         frame = new Frame("Kernel Kingdom");
         game = new Game();
         game.newGame();
+
         // create Panels
         menuPanel = new MenuPanel();
         instructionsPanel = new InstructionsPanel();
@@ -55,6 +56,8 @@ public class KernelKingdom {
         frame.add(contentPane);
         frame.pack();
         frame.setVisible(true);
+
+        frame.setFocusable(false);
 
     }
 

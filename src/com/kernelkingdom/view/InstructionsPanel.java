@@ -16,7 +16,7 @@ public class InstructionsPanel extends Panel {
     }
 
     public InstructionsPanel () {
-        super("instructions-and-text.gif");
+        super("instructions-panel.png");
         menuButton = new ImageButton("buttons/menu-button.png");
         menuButton.setBounds(16, 600, 171, 66);
         menuButton.addMouseListener(new MouseAdapter() {
