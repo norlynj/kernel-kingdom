@@ -1,6 +1,7 @@
 package view;
 
 import model.Game;
+import view.component.AudioPlayer;
 import  view.component.ImageButton;
 import  view.component.Frame;
 
@@ -18,11 +19,14 @@ public class KernelKingdom {
     private CardLayout cardLayout;
     private Game game;
 
+    private AudioPlayer audio;
+
     public KernelKingdom() {
+        audio = new AudioPlayer("bgm.wav");
+        audio.play();
         frame = new Frame("Kernel Kingdom");
         game = new Game();
         game.newGame();
-
         // create Panels
         menuPanel = new MenuPanel();
         instructionsPanel = new InstructionsPanel();
@@ -46,6 +50,7 @@ public class KernelKingdom {
         listenToAbout();
         listenToInstructions();
         listenToMainGame();
+        listenToMusic();
 
         frame.add(contentPane);
         frame.pack();
@@ -88,6 +93,23 @@ public class KernelKingdom {
 
     }
 
+    private void listenToMusic(){
+        menuPanel.getMusicStop().addActionListener(e -> soundClick());
+        menuPanel.getMusicOn().addActionListener(e -> soundClick());
+        mainGamePanel.getMusicStop().addActionListener(e -> soundClick());
+        mainGamePanel.getMusicOn().addActionListener(e -> soundClick());
+    }
+
+    public void soundClick() {
+        menuPanel.musicClick();
+        mainGamePanel.musicClick();
+        if (audio.isPlaying()) {
+            audio.stop();
+        } else {
+            audio.play();
+        }
+    }
+
     private void guess(char letter, int button){
 
         if (game.alive()) {
@@ -100,6 +122,7 @@ public class KernelKingdom {
             updateBlankSpaces(game.getCurrentGuess());
         } else {
             mainGamePanel.setGameOverVisibility();
+            updateBlankSpaces(game.getFullWordToGuess());
             System.out.println("Game over!");
         }
     }
@@ -177,10 +200,5 @@ public class KernelKingdom {
         catch (Exception err) {
             err.printStackTrace();
         }
-    }
-
-    private void switchPanel(JPanel one, JPanel two){
-        one.setVisible(false);
-        two.setVisible(true);
     }
 }
