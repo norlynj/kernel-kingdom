@@ -110,12 +110,12 @@ public class MenuPanel extends Panel {
         musicOn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-on-hover.png");
+                musicOn.setIcon("buttons/volume-on-hover.png");
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-on.png");
+                musicOn.setIcon("buttons/volume-on.png");
             }
         });
     }
