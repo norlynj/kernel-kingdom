@@ -159,8 +159,8 @@ public class MainGamePanel extends Panel {
 
         setListeners();
 
-        musicStop.setVisible(true);
-        musicOn.setVisible(false);
+        musicStop.setVisible(false);
+        musicOn.setVisible(true);
 
         success.add(restartButtonS);
         success.add(menuButtonS);
@@ -224,7 +224,7 @@ public class MainGamePanel extends Panel {
         musicStop.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-off-hover.png");
+                musicStop.setIcon("buttons/volume-on-hover.png");
             }
 
             @Override
@@ -236,7 +236,7 @@ public class MainGamePanel extends Panel {
         musicOn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-on-hover.png");
+                musicOn.setIcon("buttons/volume-off-hover.png");
             }
 
             @Override

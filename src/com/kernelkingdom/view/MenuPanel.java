@@ -33,8 +33,8 @@ public class MenuPanel extends Panel {
         musicStop.setBounds(630,630,40,40);
         musicOn.setBounds(630,630,40,40);
 
-        musicStop.setVisible(true);
-        musicOn.setVisible(false);
+        musicStop.setVisible(false);
+        musicOn.setVisible(true);
 
         setListeners();
 
@@ -98,7 +98,7 @@ public class MenuPanel extends Panel {
         musicStop.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-off-hover.png");
+                musicStop.setIcon("buttons/volume-on-hover.png");
             }
 
             @Override
@@ -110,7 +110,7 @@ public class MenuPanel extends Panel {
         musicOn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-on-hover.png");
+                musicOn.setIcon("buttons/volume-off-hover.png");
             }
 
             @Override
