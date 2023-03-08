@@ -41,10 +41,10 @@ public class ImageButton extends JButton {
     public void hover(String hover, String unhover) {
         addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
-                setIcon("buttons/" + hover);
+                setIcon(hover);
             }
             public void mouseExited(MouseEvent e) {
-                setIcon("buttons/" + unhover);
+                setIcon(unhover);
             }
         });
     }

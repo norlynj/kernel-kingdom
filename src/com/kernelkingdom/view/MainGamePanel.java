@@ -24,6 +24,7 @@ public class MainGamePanel extends Panel {
     private ImageButton menuButtonGO;
     private ImageButton musicStop;
     private ImageButton musicOn;
+    private ImageButton loop;
     private JLabel blankLetters;
 
     public Panel getMapsPanel() {
@@ -114,14 +115,7 @@ public class MainGamePanel extends Panel {
                 }
             });
 
-            letterButtons[i].addMouseListener(new MouseAdapter() {
-                public void mouseEntered(MouseEvent e) {
-                    letterButtons[finalI].setIcon("alphabet/selected/" + buttonValue + ".png");
-                }
-                public void mouseExited(MouseEvent e) {
-                    letterButtons[finalI].setIcon("alphabet/normal/" + buttonValue + ".png");
-                }
-            });
+            letterButtons[finalI].hover("alphabet/selected/" + buttonValue + ".png", "alphabet/normal/" + buttonValue + ".png");
 
             if ((i+1) % 5 == 0) {
                 letterButtons[i].setBounds(buttonBoundsX, buttonBoundsY, buttonDimensions, buttonDimensions);
@@ -151,11 +145,13 @@ public class MainGamePanel extends Panel {
         menuButtonGO = new ImageButton("buttons/menu-button.png");
         musicStop = new ImageButton("buttons/volume-off.png");
         musicOn = new ImageButton("buttons/volume-on.png");
+        loop = new ImageButton("buttons/loop.png");
 
         restartButtonGO.setBounds(66, 400, 254, 91);
         menuButtonGO.setBounds(59, 500, 171, 66);
         musicStop.setBounds(630,630,40,40);
         musicOn.setBounds(630,630,40,40);
+        loop.setBounds(560,630,40,40);
 
         setListeners();
 
@@ -173,6 +169,7 @@ public class MainGamePanel extends Panel {
         this.add(letterButtonsPanel);
         this.add(musicStop);
         this.add(musicOn);
+        this.add(loop);
 
     }
 
@@ -185,65 +182,13 @@ public class MainGamePanel extends Panel {
     }
 
     private void setListeners() {
-        restartButtonS.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                restartButtonS.setIcon("buttons/restart-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                restartButtonS.setIcon("buttons/restart.png");
-            }
-        });
-
-        menuButtonS.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                menuButtonS.setIcon("buttons/menu-button-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                menuButtonS.setIcon("buttons/menu-button.png");
-            }
-        });
-
-        restartButtonGO.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                restartButtonGO.setIcon("buttons/restart-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                restartButtonGO.setIcon("buttons/restart.png");
-            }
-        });
-
-        menuButtonGO.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                menuButtonGO.setIcon("buttons/menu-button-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                menuButtonGO.setIcon("buttons/menu-button.png");
-            }
-        });
-
-        musicStop.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-on-hover.png");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-off.png");
-            }
-        });
-
-        musicOn.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-off-hover.png");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-on.png");
-            }
-        });
+        restartButtonS.hover("buttons/restart-hover.png", "buttons/restart.png");
+        menuButtonS.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
+        restartButtonGO.hover("buttons/restart-hover.png", "buttons/restart.png");
+        menuButtonGO.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
+        musicStop.hover("buttons/volume-on-hover.png", "buttons/volume-off.png");
+        musicOn.hover("buttons/volume-off-hover.png", "buttons/volume-on.png");
+        loop.hover("buttons/loop-hover.png", "buttons/loop.png");
     }
 
     public void musicClick() {

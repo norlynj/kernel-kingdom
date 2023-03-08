@@ -67,57 +67,12 @@ public class MenuPanel extends Panel {
 
     private void setListeners(){
         // on hover listeners
-        startButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                startButton.setIcon("buttons/start-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                startButton.setIcon("buttons/start.png");
-            }
-        });
+        startButton.hover("buttons/start-hover.png", "buttons/start.png");
+        instructionsButton.hover("buttons/instructions-hover.png", "buttons/instructions.png");
+        aboutButton.hover("buttons/about-hover.png", "buttons/about.png");
+        musicStop.hover("buttons/volume-on-hover.png", "buttons/volume-off.png");
+        musicOn.hover("buttons/volume-off-hover.png", "buttons/volume-on.png");
 
-        instructionsButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                instructionsButton.setIcon("buttons/instructions-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                instructionsButton.setIcon("buttons/instructions.png");
-            }
-        });
-
-        aboutButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                aboutButton.setIcon("buttons/about-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                aboutButton.setIcon("buttons/about.png");
-            }
-        });
-
-
-        musicStop.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-on-hover.png");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                musicStop.setIcon("buttons/volume-off.png");
-            }
-        });
-
-        musicOn.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-off-hover.png");
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                musicOn.setIcon("buttons/volume-on.png");
-            }
-        });
     }
 
     public void musicClick() {

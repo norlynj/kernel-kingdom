@@ -19,14 +19,7 @@ public class AboutPanel extends Panel{
         super("about-and-text.gif");
         menuButton = new ImageButton("buttons/menu-button.png");
         menuButton.setBounds(16, 600, 171, 66);
-        menuButton.addMouseListener(new MouseAdapter() {
-            public void mouseEntered(MouseEvent e) {
-                menuButton.setIcon("buttons/menu-button-hover.png");
-            }
-            public void mouseExited(MouseEvent e) {
-                menuButton.setIcon("buttons/menu-button.png");
-            }
-        });
+        menuButton.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
         this.add(menuButton);
     }
 
