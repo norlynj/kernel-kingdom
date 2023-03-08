@@ -92,8 +92,8 @@ public class Game {
         return false;
     }
 
-    public String getFullWordToGuess() {
-        return wordToGuess;
+    public StringBuilder getFullWordToGuess() {
+        return new StringBuilder(wordToGuess);
     }
 
     public StringBuilder getCurrentGuess() {

@@ -122,6 +122,7 @@ public class KernelKingdom {
             updateBlankSpaces(game.getCurrentGuess());
         } else {
             mainGamePanel.setGameOverVisibility();
+            updateBlankSpaces(game.getFullWordToGuess());
             System.out.println("Game over!");
         }
     }
