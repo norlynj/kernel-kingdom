@@ -127,6 +127,7 @@ public class KernelKingdom {
             updateBlankSpaces(game.getCurrentGuess());
         } else {
             mainGamePanel.setGameOverVisibility();
+            disableAllBUttons();
             updateBlankSpaces(game.getFullWordToGuess());
             System.out.println("Game over!");
         }
@@ -135,7 +136,7 @@ public class KernelKingdom {
         updateMaps();
         if (game.success()) {
             mainGamePanel.setSuccessVisibility();
-
+            disableAllBUttons();
         }
     }
 
@@ -174,6 +175,13 @@ public class KernelKingdom {
             mainGamePanel.setMaps("maps/ready-state.png");
         } else {
             mainGamePanel.setMaps("maps/new-state.png");
+        }
+    }
+
+    private void disableAllBUttons() {
+        ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
+        for (int i = 0; i < 26; i++){
+            letterButtons[i].setEnabled(false);
         }
     }
 
