@@ -16,7 +16,7 @@ public class AboutPanel extends Panel{
     }
 
     public AboutPanel () {
-        super("about-and-text.gif");
+        super("about-panel.png");
         menuButton = new ImageButton("buttons/menu-button.png");
         menuButton.setBounds(16, 600, 171, 66);
         menuButton.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
