@@ -4,6 +4,7 @@ import model.Game;
 import view.component.AudioPlayer;
 import  view.component.ImageButton;
 import  view.component.Frame;
+import  view.component.Panel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -36,7 +37,7 @@ public class KernelKingdom {
         updateBlankSpaces(game.getCurrentGuess());
 
         // set up the content pane and card layout
-        contentPane = new Panel();
+        contentPane = new Panel(true, "menu.png");
         cardLayout = new CardLayout();
         contentPane.setLayout(cardLayout);
 
