@@ -29,7 +29,6 @@ public class ImageButton extends JButton {
 
         addActionListener(e -> {
             new AudioPlayer("click.wav").play(); //click sound
-            System.out.println("click");
         });
 
     }
