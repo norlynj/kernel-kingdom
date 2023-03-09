@@ -4,10 +4,12 @@ import view.component.Frame;
 import  view.component.ImageButton;
 import view.component.Panel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class MenuPanel extends Panel {
     private Panel menu;
@@ -38,11 +40,18 @@ public class MenuPanel extends Panel {
 
         setListeners();
 
-        this.add(startButton);
-        this.add(instructionsButton);
-        this.add(aboutButton);
-        this.add(musicStop);
-        this.add(musicOn);
+        ImageIcon background = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/images/menu.gif")));
+
+        JLabel bgImage = new JLabel();
+        bgImage.setBounds(0, 0, 700, 700);
+        bgImage.setIcon(background);
+        bgImage.add(startButton);
+        bgImage.add(instructionsButton);
+        bgImage.add(aboutButton);
+        bgImage.add(musicStop);
+        bgImage.add(musicOn);
+
+        this.add(bgImage);
     }
 
     public ImageButton getMusicStop() {
