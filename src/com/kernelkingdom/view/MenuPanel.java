@@ -21,7 +21,7 @@ public class MenuPanel extends Panel {
     private ImageButton musicOn;
 
     public MenuPanel () {
-        super("menu.png");
+        super("menu.gif");
         // MAIN MENU PANEL
         startButton = new ImageButton("buttons/start.png");
         instructionsButton = new ImageButton("buttons/instructions.png");
