@@ -134,9 +134,8 @@ public class KernelKingdom {
     }
     private void correct() {
         updateMaps();
-        if (game.success()) {
-            mainGamePanel.setSuccessVisibility();
-            disableAllBUttons();
+        if (game.success() && game.alive()) {
+            next();
         }
     }
 
@@ -146,6 +145,12 @@ public class KernelKingdom {
         if (game.getMemory() > 0) {
             updateBackground();
         }
+    }
+
+    private void next() {
+        game.nextWord();
+        updateBlankSpaces(game.getCurrentGuess());
+        updateMaps();
     }
     private void updateBlankSpaces(StringBuilder guesses) {
         // print spaces between blanks

@@ -15,6 +15,7 @@ public class Game {
     private static String wordToGuess;
     private static StringBuilder currentGuess;
     private static int memory;
+    private static int processFinished;
 
     public Game() {
         assert textFile != null;
@@ -32,6 +33,14 @@ public class Game {
         System.out.println("currentGuess: " + currentGuess);
         System.out.println("words: " + words);
         memory = MAX_MEMORY;
+    }
+
+    public void nextWord() {
+        wordToGuess = this.getRandomWord();
+        currentGuess = this.setBlanks();
+        System.out.println("wordToGuess: " + wordToGuess);
+        System.out.println("currentGuess: " + currentGuess);
+        System.out.println("words: " + words);
     }
 
     public boolean alive() {
@@ -89,6 +98,7 @@ public class Game {
             System.out.println("success");
             System.out.println("Congratulations, you guessed the word: " + wordToGuess);
             words.remove(wordToGuess); // avoid repetition
+            processFinished++;
             return true;
         }
         return false;

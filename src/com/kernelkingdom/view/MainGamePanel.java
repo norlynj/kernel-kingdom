@@ -26,6 +26,7 @@ public class MainGamePanel extends Panel {
     private ImageButton musicOn;
     private ImageButton restart;
     private JLabel blankLetters;
+    private JLabel processFinished;
 
     public Panel getMapsPanel() {
         return mapsPanel;
@@ -93,6 +94,14 @@ public class MainGamePanel extends Panel {
         blankLetters.setBounds(10, 87, 700, 71);
         blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
         blankLetters.setHorizontalAlignment(JLabel.CENTER);
+
+        // Process count finished
+        processFinished = new JLabel();
+        processFinished.setBounds(10, 50, 700, 71);
+        processFinished.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
+        processFinished.setHorizontalAlignment(JLabel.CENTER);
+        processFinished.setText("process finished");
+
         // Maps panel
         mapsPanel = new Panel(true, "maps/new-state.png", 47, 200, 338, 294);
         // Keybroard buttons
@@ -165,6 +174,7 @@ public class MainGamePanel extends Panel {
         this.add(success);
         this.add(gameOver);
         this.add(blankLetters);
+        this.add(processFinished);
         this.add(mapsPanel);
         this.add(letterButtonsPanel);
         this.add(musicStop);
