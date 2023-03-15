@@ -55,14 +55,9 @@ public class MainGamePanel extends Panel {
         return menuButtonGO;
     }
 
-    public void setSuccessVisibility() {
-        this.success.setVisible(true);
-        this.gameOver.setVisible(false);
-    }
-
-    public void setGameOverVisibility() {
-        this.gameOver.setVisible(true);
-        this.success.setVisible(false);
+    public void setSuccessGameOverVisibility(boolean a, boolean b) {
+        this.success.setVisible(a);
+        this.gameOver.setVisible(b);
     }
 
     public void setMaps(String image) {
