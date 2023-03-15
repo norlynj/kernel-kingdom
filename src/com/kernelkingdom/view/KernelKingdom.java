@@ -200,11 +200,11 @@ public class KernelKingdom {
         System.out.println("game progress:" + game.getScore());
         int progress = game.getScore();
 
-        if (progress == 2) {
+        if (progress == 0) {
             mainGamePanel.setMaps("maps/new-state.png");
-        } else if (progress == 4) {
+        } else if (progress == 2) {
             mainGamePanel.setMaps("maps/ready-state.png");
-        } else if (progress == 6) {
+        } else if (progress == 5) {
             mainGamePanel.setMaps("maps/running-state.png");
         } else if (progress == 8) {
             mainGamePanel.setMaps("maps/terminate-state.png");
