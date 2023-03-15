@@ -161,7 +161,7 @@ public class KernelKingdom {
 
     private void next() {
         mainGamePanel.setSuccessGameOverVisibility(true, false);
-        if (game.hasNextWord()) {
+        if (game.hasNextWord() && game.getScore() < 6) {
             Timer timer = new Timer(2000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -204,9 +204,9 @@ public class KernelKingdom {
             mainGamePanel.setMaps("maps/new-state.png");
         } else if (progress == 2) {
             mainGamePanel.setMaps("maps/ready-state.png");
-        } else if (progress == 5) {
+        } else if (progress == 4) {
             mainGamePanel.setMaps("maps/running-state.png");
-        } else if (progress == 8) {
+        } else if (progress == 6) {
             mainGamePanel.setMaps("maps/terminate-state.png");
         }
     }

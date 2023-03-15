@@ -33,6 +33,7 @@ public class Game {
         System.out.println("currentGuess: " + currentGuess);
         System.out.println("words: " + words);
         memory = MAX_MEMORY;
+        score = 0;
     }
 
     public void nextWord() {
