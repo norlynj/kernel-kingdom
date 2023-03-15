@@ -162,7 +162,7 @@ public class KernelKingdom {
     private void next() {
         mainGamePanel.setSuccessGameOverVisibility(true, false);
         if (game.hasNextWord() && game.getScore() < 6) {
-            Timer timer = new Timer(2000, new ActionListener() {
+            Timer timer = new Timer(3000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     game.nextWord();
