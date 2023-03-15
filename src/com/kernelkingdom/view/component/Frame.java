@@ -28,7 +28,7 @@ public class  Frame extends JFrame {
 
         window.setVisible(true);
         try {
-            Thread.sleep(10000); //show the splash screen for 10 seconds
+            Thread.sleep(13000); //show the splash screen for 10 seconds
         } catch (InterruptedException e) {
             e.getMessage();
         }
