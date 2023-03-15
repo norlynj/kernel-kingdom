@@ -58,8 +58,6 @@ public class KernelKingdom {
         frame.pack();
         frame.setVisible(true);
 
-        frame.setFocusable(false);
-
     }
 
     private void listenToMenu() {
@@ -96,6 +94,19 @@ public class KernelKingdom {
             letterButtons[i].addActionListener(e ->  guess(Character.toLowerCase(buttonValue), finalI));
         }
 
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                int letterIndex = keyCode - KeyEvent.VK_A; // convert key code to letter index (0-25)
+                if (letterIndex >= 0 && letterIndex <= 25) { // check if the pressed key is a letter from a to z
+                    guess(e.getKeyChar(), e.getKeyChar() - 'A');
+                    mainGamePanel.getLetterButtons()[letterIndex].setEnabled(false);
+                }
+            }
+        });
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
     }
 
     private void listenToMusic(){
@@ -156,7 +167,6 @@ public class KernelKingdom {
                 public void actionPerformed(ActionEvent e) {
                     game.nextWord();
                     updateBlankSpaces(game.getCurrentGuess());
-                    updateMaps();
                     mainGamePanel.setSuccessGameOverVisibility(false, false);
                 }
             });
@@ -164,6 +174,8 @@ public class KernelKingdom {
             timer.start();
 
             updateBlankSpaces(game.getCurrentGuess());
+            updateMaps();
+
         } else {
             disableAllBUttons();
             System.out.println("success");
@@ -185,8 +197,6 @@ public class KernelKingdom {
     }
 
     private void updateMaps() {
-//        - new(0) ready(25) run(50) terminate(100)
-//        - the length of unique characters in a word should be the basis of map movement
         System.out.println("game progress:" + game.getScore());
         int progress = game.getScore();
 
