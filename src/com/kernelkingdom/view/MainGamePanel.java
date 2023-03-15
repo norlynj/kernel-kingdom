@@ -26,6 +26,7 @@ public class MainGamePanel extends Panel {
     private ImageButton musicOn;
     private ImageButton restart;
     private JLabel blankLetters;
+    private JLabel score;
 
     public Panel getMapsPanel() {
         return mapsPanel;
@@ -75,6 +76,7 @@ public class MainGamePanel extends Panel {
     public void restart() {
         this.gameOver.setVisible(false);
         this.success.setVisible(false);
+        score.setText("score: 0");
         // update keyboard
         for (int i = 0; i < 26; i++) {
             this.letterButtons[i].setEnabled(true);
@@ -89,6 +91,13 @@ public class MainGamePanel extends Panel {
         blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
         blankLetters.setForeground(Color.WHITE);
         blankLetters.setHorizontalAlignment(JLabel.CENTER);
+
+        //score
+        score = new JLabel();
+        score.setBounds(47, 140, 700, 71);
+        score.setFont(new Font("Source Sans Pro", Font.BOLD, 20));
+        score.setForeground(Color.WHITE);
+        score.setText("score: 0");
 
         // Maps panel
         mapsPanel = new Panel(true, "maps/new-state.png", 47, 200, 338, 294);
@@ -162,12 +171,17 @@ public class MainGamePanel extends Panel {
         this.add(success);
         this.add(gameOver);
         this.add(blankLetters);
+        this.add(score);
         this.add(mapsPanel);
         this.add(letterButtonsPanel);
         this.add(musicStop);
         this.add(musicOn);
         this.add(restart);
 
+    }
+
+    public JLabel getScore() {
+        return score;
     }
 
     public ImageButton getMusicStop() {

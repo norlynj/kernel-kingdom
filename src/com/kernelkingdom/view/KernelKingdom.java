@@ -146,7 +146,6 @@ public class KernelKingdom {
     private void correct() {
         if (game.success() && game.alive()) {
             new AudioPlayer("correct.wav").play();
-            updateMaps();
             next();
         }
     }
@@ -175,6 +174,7 @@ public class KernelKingdom {
 
             updateBlankSpaces(game.getCurrentGuess());
             updateMaps();
+            mainGamePanel.getScore().setText("score: " + game.getScore());
             enableAllBUttons();
 
         } else {
