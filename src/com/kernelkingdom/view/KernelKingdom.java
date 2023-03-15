@@ -175,6 +175,7 @@ public class KernelKingdom {
 
             updateBlankSpaces(game.getCurrentGuess());
             updateMaps();
+            enableAllBUttons();
 
         } else {
             disableAllBUttons();
@@ -215,6 +216,13 @@ public class KernelKingdom {
         ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
         for (int i = 0; i < 26; i++){
             letterButtons[i].setEnabled(false);
+        }
+    }
+
+    private void enableAllBUttons() {
+        ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
+        for (int i = 0; i < 26; i++){
+            letterButtons[i].setEnabled(true);
         }
     }
 
