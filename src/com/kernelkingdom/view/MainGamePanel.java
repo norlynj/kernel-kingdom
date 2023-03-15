@@ -93,6 +93,7 @@ public class MainGamePanel extends Panel {
         blankLetters = new JLabel();
         blankLetters.setBounds(10, 87, 700, 71);
         blankLetters.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
+        blankLetters.setForeground(Color.WHITE);
         blankLetters.setHorizontalAlignment(JLabel.CENTER);
 
         // Process count finished
@@ -100,6 +101,7 @@ public class MainGamePanel extends Panel {
         processFinished.setBounds(10, 50, 700, 71);
         processFinished.setFont(new Font("Source Sans Pro", Font.BOLD, 35));
         processFinished.setHorizontalAlignment(JLabel.CENTER);
+        processFinished.setForeground(Color.WHITE);
         processFinished.setText("process finished");
 
         // Maps panel
