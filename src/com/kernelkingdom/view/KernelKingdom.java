@@ -126,15 +126,16 @@ public class KernelKingdom {
             }
             updateBlankSpaces(game.getCurrentGuess());
         } else {
-            mainGamePanel.setGameOverVisibility();
+            mainGamePanel.setSuccessGameOverVisibility(false, true);
             disableAllBUttons();
             updateBlankSpaces(game.getFullWordToGuess());
             System.out.println("Game over!");
         }
     }
     private void correct() {
-        updateMaps();
         if (game.success() && game.alive()) {
+            new AudioPlayer("correct.wav").play();
+            updateMaps();
             next();
         }
     }
@@ -148,9 +149,26 @@ public class KernelKingdom {
     }
 
     private void next() {
-        game.nextWord();
-        updateBlankSpaces(game.getCurrentGuess());
-        updateMaps();
+        mainGamePanel.setSuccessGameOverVisibility(true, false);
+        if (game.hasNextWord()) {
+            Timer timer = new Timer(2000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    game.nextWord();
+                    updateBlankSpaces(game.getCurrentGuess());
+                    updateMaps();
+                    mainGamePanel.setSuccessGameOverVisibility(false, false);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+
+            updateBlankSpaces(game.getCurrentGuess());
+        } else {
+            disableAllBUttons();
+            System.out.println("success");
+        }
+
     }
     private void updateBlankSpaces(StringBuilder guesses) {
         // print spaces between blanks
@@ -169,17 +187,17 @@ public class KernelKingdom {
     private void updateMaps() {
 //        - new(0) ready(25) run(50) terminate(100)
 //        - the length of unique characters in a word should be the basis of map movement
-        System.out.println("game progress:" + game.progress());
-        double progress = game.progress();
+        System.out.println("game progress:" + game.getScore());
+        int progress = game.getScore();
 
-        if (progress == 100) {
-            mainGamePanel.setMaps("maps/terminate-state.png");
-        } else if (progress >= 50) {
-            mainGamePanel.setMaps("maps/running-state.png");
-        } else if (progress >= 25) {
-            mainGamePanel.setMaps("maps/ready-state.png");
-        } else {
+        if (progress == 2) {
             mainGamePanel.setMaps("maps/new-state.png");
+        } else if (progress == 4) {
+            mainGamePanel.setMaps("maps/ready-state.png");
+        } else if (progress == 6) {
+            mainGamePanel.setMaps("maps/running-state.png");
+        } else if (progress == 8) {
+            mainGamePanel.setMaps("maps/terminate-state.png");
         }
     }
 
