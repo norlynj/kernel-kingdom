@@ -15,7 +15,7 @@ public class Game {
     private static String wordToGuess;
     private static StringBuilder currentGuess;
     private static int memory;
-    private static int processFinished;
+    private static int score;
 
     public Game() {
         assert textFile != null;
@@ -98,12 +98,15 @@ public class Game {
             System.out.println("success");
             System.out.println("Congratulations, you guessed the word: " + wordToGuess);
             words.remove(wordToGuess); // avoid repetition
-            processFinished++;
+            score++;
             return true;
         }
         return false;
     }
 
+    public boolean hasNextWord() {
+        return !words.isEmpty();
+    }
     public StringBuilder getFullWordToGuess() {
         return new StringBuilder(wordToGuess);
     }
@@ -112,31 +115,7 @@ public class Game {
         return currentGuess;
     }
 
-    public double progress() {
-        String word = wordToGuess.toString();
-        Set<Character> uniqueChars = new HashSet<>();
-        for (int i = 0; i < word.length(); i++) {
-            uniqueChars.add(word.charAt(i));
-        }
-
-        int totalUniqueChars = uniqueChars.size();
-        int correctlyGuessedUniqueChars = 0;
-
-        String guess = currentGuess.toString();
-        Set<Character> guessedChars = new HashSet<>();
-        for (int i = 0; i < guess.length(); i++) {
-            if (guess.charAt(i) != '_')
-                guessedChars.add(guess.charAt(i));
-        }
-
-        for (char c : guessedChars) {
-            if (uniqueChars.contains(c)) {
-                correctlyGuessedUniqueChars++;
-            }
-        }
-        System.out.println("uniqueChars:" + uniqueChars);
-        System.out.println("guessedChars:" + guessedChars);
-
-        return ((double) correctlyGuessedUniqueChars / totalUniqueChars) * 100;
+    public static int getScore() {
+        return score;
     }
 }
