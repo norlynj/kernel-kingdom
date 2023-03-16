@@ -62,9 +62,18 @@ public class KernelKingdom {
     }
 
     private void listenToMenu() {
-        menuPanel.getStartButton().addActionListener(e -> cardLayout.show(contentPane, "mainGamePanel" ));
-        menuPanel.getInstructionsButton().addActionListener(e -> cardLayout.show(contentPane, "instructionsPanel" ));
-        menuPanel.getAboutButton().addActionListener(e -> cardLayout.show(contentPane, "aboutPanel" ));
+        menuPanel.getStartButton().addActionListener(e -> {
+            cardLayout.show(contentPane, "mainGamePanel" );
+            allowedToGuess = true;
+        });
+        menuPanel.getInstructionsButton().addActionListener(e -> {
+            cardLayout.show(contentPane, "instructionsPanel" );
+            allowedToGuess = false;
+        });
+        menuPanel.getAboutButton().addActionListener(e -> {
+            cardLayout.show(contentPane, "aboutPanel" );
+            allowedToGuess = false;
+        });
     }
 
     private void listenToInstructions() {
@@ -82,11 +91,13 @@ public class KernelKingdom {
         mainGamePanel.getMenuButtonS().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
             restartGame();
-            allowedToGuess = true;
+            allowedToGuess = false;
         });
         mainGamePanel.getMenuButtonGO().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
             restartGame();
+            allowedToGuess = false;
+
         });
 
         ImageButton[] letterButtons = mainGamePanel.getLetterButtons();
