@@ -86,15 +86,33 @@ public class KernelKingdom {
     }
 
     private void listenToMainGame(){
+        mainGamePanel.getRestartButtonR().addActionListener(e -> {
+            restartGame();
+            mainGamePanel.getRestartPanel().setVisible(false);
+        });
+        mainGamePanel.getContinueButtonR().addActionListener(e -> mainGamePanel.getRestartPanel().setVisible(false));
         mainGamePanel.getRestartButtonS().addActionListener(e -> restartGame());
         mainGamePanel.getRestartButtonGO().addActionListener(e -> restartGame());
-        mainGamePanel.getRestart().addActionListener(e -> restartGame());
+        mainGamePanel.getRestart().addActionListener(e -> mainGamePanel.getRestartPanel().setVisible(true));
         mainGamePanel.getMenuButtonS().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
             restartGame();
             allowedToGuess = false;
         });
         mainGamePanel.getMenuButtonGO().addActionListener(e -> {
+            cardLayout.show(contentPane, "menuPanel" );
+            restartGame();
+            allowedToGuess = false;
+
+        });
+
+        mainGamePanel.getMenuButtonR().addActionListener(e -> {
+            mainGamePanel.getRestartPanel().setVisible(false);
+            cardLayout.show(contentPane, "menuPanel" );
+            restartGame();
+            allowedToGuess = false;
+        });
+        mainGamePanel.getMenuButtonR().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
             restartGame();
             allowedToGuess = false;

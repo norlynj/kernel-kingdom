@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class MainGamePanel extends Panel {
     private Panel mainGame;
+    private Panel restartPanel;
     private Panel success;
     private Panel gameOver;
     private Panel mapsPanel;
@@ -20,6 +21,9 @@ public class MainGamePanel extends Panel {
     private Panel aboutPanel;
     private ImageButton[] letterButtons;
     private ImageButton restartButtonS;
+    private ImageButton menuButtonR;
+    private ImageButton restartButtonR;
+    private ImageButton continueButtonR;
     private ImageButton menuButtonS;
     private ImageButton restartButtonGO;
     private ImageButton menuButtonGO;
@@ -89,6 +93,22 @@ public class MainGamePanel extends Panel {
         return successGIF;
     }
 
+    public Panel getRestartPanel() {
+        return restartPanel;
+    }
+
+    public ImageButton getMenuButtonR() {
+        return menuButtonR;
+    }
+
+    public ImageButton getRestartButtonR() {
+        return restartButtonR;
+    }
+
+    public ImageButton getContinueButtonR() {
+        return continueButtonR;
+    }
+
     public MainGamePanel () {
         super("main-game-panel-5.png");
         //Blanks for the word
@@ -144,6 +164,14 @@ public class MainGamePanel extends Panel {
         }
         letterButtonsPanel.setVisible(true);
 
+        restartPanel = new Panel(false, "pause-panel.png");
+        restartButtonR = new ImageButton("buttons/restart.png");
+        menuButtonR = new ImageButton("buttons/menu-button.png");
+        continueButtonR = new ImageButton("buttons/continue.png");
+        continueButtonR.setBounds(59, 350, 254, 66);
+        restartButtonR.setBounds(66, 420, 254, 66);
+        menuButtonR.setBounds(59, 510, 171, 66);
+
         success = new Panel(false, "success-panel.png");
         restartButtonS = new ImageButton("buttons/restart.png");
         menuButtonS = new ImageButton("buttons/menu-button.png");
@@ -177,11 +205,15 @@ public class MainGamePanel extends Panel {
         musicStop.setVisible(false);
         musicOn.setVisible(true);
 
+        restartPanel.add(restartButtonR);
+        restartPanel.add(menuButtonR);
+        restartPanel.add(continueButtonR);
         success.add(restartButtonS);
         success.add(menuButtonS);
         this.add(successGIF);
         gameOver.add(restartButtonGO);
         gameOver.add(menuButtonGO);
+        this.add(restartPanel);
         this.add(success);
         this.add(gameOver);
         this.add(blankLetters);
@@ -209,11 +241,14 @@ public class MainGamePanel extends Panel {
     private void setListeners() {
         restartButtonS.hover("buttons/restart-hover.png", "buttons/restart.png");
         menuButtonS.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
+        restartButtonR.hover("buttons/restart-hover.png", "buttons/restart.png");
+        menuButtonR.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
         restartButtonGO.hover("buttons/restart-hover.png", "buttons/restart.png");
         menuButtonGO.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
         musicStop.hover("buttons/volume-on-hover.png", "buttons/volume-off.png");
         musicOn.hover("buttons/volume-off-hover.png", "buttons/volume-on.png");
         restart.hover("buttons/loop-hover.png", "buttons/loop.png");
+        continueButtonR.hover("buttons/continue-hover.png", "buttons/continue.png");
     }
 
     public ImageButton getRestart() {
