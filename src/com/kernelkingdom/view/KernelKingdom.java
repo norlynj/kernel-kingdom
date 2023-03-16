@@ -179,7 +179,7 @@ public class KernelKingdom {
             allowedToGuess = false;
             mainGamePanel.getSuccessGIF().setVisible(true);
             disableAllBUttons();
-            Timer timer = new Timer(3500, new ActionListener() {
+            Timer timer = new Timer(3000, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     mainGamePanel.getSuccessGIF().setVisible(false);
