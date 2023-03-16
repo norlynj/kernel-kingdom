@@ -53,8 +53,6 @@ public class AboutPanel extends Panel{
                 "how your knowledge on Operating Systems can help you win the game. Are you " +
                 "ready to enter the Kingdom?</html>", 25,true, SwingConstants.CENTER);
         text.setBounds(0, 0, 700, 700);
-        text.setForeground(Color.WHITE);
-        text.setHorizontalAlignment(JLabel.CENTER);
         bgImage.add(text);
 
         this.add(bgImage);
