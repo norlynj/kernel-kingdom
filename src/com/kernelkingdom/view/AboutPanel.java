@@ -24,14 +24,12 @@ public class AboutPanel extends Panel{
         menuButton.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
         menuButton.setOpaque(false);
 
-
         ImageIcon background = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/images/about-and-text.gif")));
 
         JLabel bgImage = new JLabel();
         bgImage.setBounds(0, 0, 700, 700);
         bgImage.setIcon(background);
         bgImage.add(menuButton);
-
 
         this.add(bgImage);
     }

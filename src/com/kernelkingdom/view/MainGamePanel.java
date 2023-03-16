@@ -30,13 +30,7 @@ public class MainGamePanel extends Panel {
     private JLabel score;
     private JLabel successGIF;
 
-    public Panel getMapsPanel() {
-        return mapsPanel;
-    }
 
-    public Panel getLetterButtonsPanel() {
-        return letterButtonsPanel;
-    }
 
     public ImageButton[] getLetterButtons() {
         return letterButtons;
@@ -56,6 +50,22 @@ public class MainGamePanel extends Panel {
 
     public ImageButton getMenuButtonGO() {
         return menuButtonGO;
+    }
+
+    public JLabel getScore() {
+        return score;
+    }
+
+    public ImageButton getMusicStop() {
+        return musicStop;
+    }
+
+    public ImageButton getMusicOn() {
+        return musicOn;
+    }
+
+    public ImageButton getRestart() {
+        return restart;
     }
 
     public void setSuccessGameOverVisibility(boolean a, boolean b) {
@@ -138,9 +148,7 @@ public class MainGamePanel extends Panel {
                 buttonBoundsX += incrementer;
 
             }
-
             letterButtonsPanel.add(letterButtons[i]);
-
         }
         letterButtonsPanel.setVisible(true);
 
@@ -179,9 +187,10 @@ public class MainGamePanel extends Panel {
 
         success.add(restartButtonS);
         success.add(menuButtonS);
-        this.add(successGIF);
         gameOver.add(restartButtonGO);
         gameOver.add(menuButtonGO);
+
+        this.add(successGIF);
         this.add(success);
         this.add(gameOver);
         this.add(blankLetters);
@@ -194,18 +203,6 @@ public class MainGamePanel extends Panel {
 
     }
 
-    public JLabel getScore() {
-        return score;
-    }
-
-    public ImageButton getMusicStop() {
-        return musicStop;
-    }
-
-    public ImageButton getMusicOn() {
-        return musicOn;
-    }
-
     private void setListeners() {
         restartButtonS.hover("buttons/restart-hover.png", "buttons/restart.png");
         menuButtonS.hover("buttons/menu-button-hover.png", "buttons/menu-button.png");
@@ -214,10 +211,6 @@ public class MainGamePanel extends Panel {
         musicStop.hover("buttons/volume-on-hover.png", "buttons/volume-off.png");
         musicOn.hover("buttons/volume-off-hover.png", "buttons/volume-on.png");
         restart.hover("buttons/loop-hover.png", "buttons/loop.png");
-    }
-
-    public ImageButton getRestart() {
-        return restart;
     }
 
     public void musicClick() {
