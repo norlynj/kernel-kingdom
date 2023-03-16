@@ -5,9 +5,14 @@ import  view.component.ImageButton;
 import view.component.Panel;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Objects;
 
 public class MenuPanel extends Panel {
+    private Panel menu;
     private ImageButton startButton;
     private ImageButton instructionsButton;
     private ImageButton aboutButton;
