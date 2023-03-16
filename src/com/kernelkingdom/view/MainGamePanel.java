@@ -3,7 +3,6 @@ package view;
 import view.component.ImageButton;
 import view.component.Frame;
 import view.component.Panel;
-import view.component.Label;
 
 import javax.swing.*;
 import java.awt.*;
@@ -100,8 +99,10 @@ public class MainGamePanel extends Panel {
         blankLetters.setHorizontalAlignment(JLabel.CENTER);
 
         //score
-        score = new Label("score: 0", 30, false, SwingConstants.LEFT);
+        score = new JLabel();
         score.setBounds(47, 140, 700, 71);
+        score.setFont(new Font("Source Sans Pro", Font.BOLD, 20));
+        score.setForeground(Color.WHITE);
         score.setText("score: 0");
 
         // Maps panel
