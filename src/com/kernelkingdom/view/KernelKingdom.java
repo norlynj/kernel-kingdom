@@ -112,7 +112,7 @@ public class KernelKingdom {
             public void keyReleased(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 int letterIndex = keyCode - KeyEvent.VK_A; // convert key code to letter index (0-25)
-                if (letterIndex >= 0 && letterIndex <= 25) { // check if the pressed key is a letter from a to z
+                if (letterIndex >= 0 && letterIndex <= 25 && allowedToGuess) { // check if the pressed key is a letter from a to z
                     guess(e.getKeyChar(), e.getKeyChar() - 'A');
                     mainGamePanel.getLetterButtons()[letterIndex].setEnabled(false);
                 }
