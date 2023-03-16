@@ -26,6 +26,7 @@ public class KernelKingdom {
     public KernelKingdom() {
         audio = new AudioPlayer("bgm.wav");
         audio.play();
+        audio.loop();
         frame = new Frame("Kernel Kingdom");
         game = new Game();
         game.newGame();
