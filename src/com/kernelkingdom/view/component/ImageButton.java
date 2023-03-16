@@ -26,6 +26,7 @@ public class ImageButton extends JButton {
         setOpaque(false);
         this.setIcon(imageName);
         setVisible(true);
+        setFocusable(false);
 
         addActionListener(e -> {
             new AudioPlayer("click.wav").play(); //click sound
