@@ -7,6 +7,7 @@ import view.component.Panel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
 public class MainGamePanel extends Panel {
     private Panel mainGame;
@@ -27,6 +28,7 @@ public class MainGamePanel extends Panel {
     private ImageButton restart;
     private JLabel blankLetters;
     private JLabel score;
+    private JLabel successGIF;
 
     public Panel getMapsPanel() {
         return mapsPanel;
@@ -81,6 +83,10 @@ public class MainGamePanel extends Panel {
         for (int i = 0; i < 26; i++) {
             this.letterButtons[i].setEnabled(true);
         }
+    }
+
+    public JLabel getSuccessGIF() {
+        return successGIF;
     }
 
     public MainGamePanel () {
@@ -142,6 +148,13 @@ public class MainGamePanel extends Panel {
         restartButtonS = new ImageButton("buttons/restart.png");
         menuButtonS = new ImageButton("buttons/menu-button.png");
 
+        ImageIcon background = new ImageIcon(Objects.requireNonNull(getClass().getResource("/resources/images/mid-success.gif")));
+
+        successGIF = new JLabel();
+        successGIF.setBounds(0, 0, 700, 700);
+        successGIF.setIcon(background);
+        successGIF.setVisible(false);
+
         restartButtonS.setBounds(66, 400, 254, 91);
         menuButtonS.setBounds(59, 500, 171, 66);
 
@@ -166,6 +179,7 @@ public class MainGamePanel extends Panel {
 
         success.add(restartButtonS);
         success.add(menuButtonS);
+        this.add(successGIF);
         gameOver.add(restartButtonGO);
         gameOver.add(menuButtonGO);
         this.add(success);

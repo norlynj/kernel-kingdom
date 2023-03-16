@@ -21,6 +21,7 @@ public class KernelKingdom {
     private Game game;
 
     private AudioPlayer audio;
+    private boolean allowedToGuess = false;
 
     public KernelKingdom() {
         audio = new AudioPlayer("bgm.wav");
@@ -81,6 +82,7 @@ public class KernelKingdom {
         mainGamePanel.getMenuButtonS().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
             restartGame();
+            allowedToGuess = true;
         });
         mainGamePanel.getMenuButtonGO().addActionListener(e -> {
             cardLayout.show(contentPane, "menuPanel" );
@@ -130,12 +132,14 @@ public class KernelKingdom {
 
         if (game.alive()) {
             System.out.println(letter);
-            if (game.guess(letter)) {
-                correct();
-            } else {
-                incorrect();
+            if (allowedToGuess) {
+                if (game.guess(letter)) {
+                    correct();
+                } else {
+                    incorrect();
+                }
+                updateBlankSpaces(game.getCurrentGuess());
             }
-            updateBlankSpaces(game.getCurrentGuess());
         } else {
             mainGamePanel.setSuccessGameOverVisibility(false, true);
             disableAllBUttons();
@@ -159,25 +163,28 @@ public class KernelKingdom {
     }
 
     private void next() {
-        mainGamePanel.setSuccessGameOverVisibility(true, false);
         if (game.hasNextWord() && game.getScore() < 6) {
-            Timer timer = new Timer(3000, new ActionListener() {
+            allowedToGuess = false;
+            mainGamePanel.getSuccessGIF().setVisible(true);
+            disableAllBUttons();
+            Timer timer = new Timer(3500, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    game.nextWord();
-                    updateBlankSpaces(game.getCurrentGuess());
-                    mainGamePanel.setSuccessGameOverVisibility(false, false);
+                    mainGamePanel.getSuccessGIF().setVisible(false);
+                    enableAllBUttons();
+                    allowedToGuess = true;
                 }
             });
             timer.setRepeats(false);
             timer.start();
 
+            game.nextWord();
             updateBlankSpaces(game.getCurrentGuess());
             updateMaps();
             mainGamePanel.getScore().setText("score: " + game.getScore());
-            enableAllBUttons();
 
         } else {
+            mainGamePanel.setSuccessGameOverVisibility(true, false);
             disableAllBUttons();
             System.out.println("success");
         }
