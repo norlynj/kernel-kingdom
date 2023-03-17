@@ -1,7 +1,7 @@
 # kernel-kingdom
 CMSC 125 Hangman OS Game
-game name: Kernel Kingdom
-developers: Norlyn Jane Castillo, Jannah Esplanada, Charissa Mae Madriaga
+- game name: Kernel Kingdom
+- developers: Norlyn Jane Castillo, Jannah Esplanada, Charissa Mae Madriaga
 
 ## 🛠️ How to compile and run the source code
 
